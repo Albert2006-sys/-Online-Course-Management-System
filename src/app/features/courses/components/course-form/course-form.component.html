@@ -1,0 +1,232 @@
+<div class="course-form-container">
+  <!-- Header -->
+  <div class="header">
+    <h2>
+      <mat-icon>{{ isEditMode ? 'edit' : 'add_circle' }}</mat-icon>
+      {{ isEditMode ? 'Edit Course' : 'Create New Course' }}
+    </h2>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoading" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>{{ isEditMode ? 'Loading course...' : 'Saving course...' }}</p>
+  </div>
+
+  <!-- Form -->
+  <mat-card *ngIf="!isLoading">
+    <mat-card-content>
+      <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Basic Information Section -->
+        <div class="form-section">
+          <h3>
+            <mat-icon>info</mat-icon>
+            Basic Information
+          </h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Course Title</mat-label>
+            <input matInput formControlName="title" placeholder="Enter course title">
+            <mat-icon matSuffix>title</mat-icon>
+            <mat-error *ngIf="courseForm.get('title')?.touched">
+              {{ getErrorMessage('title') }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Description</mat-label>
+            <textarea 
+              matInput 
+              formControlName="description" 
+              rows="4"
+              placeholder="Describe the course content and objectives"
+            ></textarea>
+            <mat-error *ngIf="courseForm.get('description')?.touched">
+              {{ getErrorMessage('description') }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Instructor Name</mat-label>
+            <input matInput formControlName="instructor" placeholder="Enter instructor name">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error *ngIf="courseForm.get('instructor')?.touched">
+              {{ getErrorMessage('instructor') }}
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Course Details Section -->
+        <div class="form-section">
+          <h3>
+            <mat-icon>settings</mat-icon>
+            Course Details
+          </h3>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Category</mat-label>
+              <mat-select formControlName="category">
+                <mat-option *ngFor="let category of categories" [value]="category">
+                  {{ category }}
+                </mat-option>
+              </mat-select>
+              <mat-icon matSuffix>category</mat-icon>
+              <mat-error *ngIf="courseForm.get('category')?.touched">
+                Category is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Level</mat-label>
+              <mat-select formControlName="level">
+                <mat-option *ngFor="let level of levels" [value]="level">
+                  {{ level }}
+                </mat-option>
+              </mat-select>
+              <mat-icon matSuffix>signal_cellular_alt</mat-icon>
+              <mat-error *ngIf="courseForm.get('level')?.touched">
+                Level is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Duration (hours)</mat-label>
+              <input matInput type="number" formControlName="duration" placeholder="e.g., 40">
+              <mat-icon matSuffix>schedule</mat-icon>
+              <mat-error *ngIf="courseForm.get('duration')?.touched">
+                {{ getErrorMessage('duration') }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Price ($)</mat-label>
+              <input matInput type="number" step="0.01" formControlName="price" placeholder="e.g., 99.99">
+              <mat-icon matSuffix>attach_money</mat-icon>
+              <mat-error *ngIf="courseForm.get('price')?.touched">
+                {{ getErrorMessage('price') }}
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Max Students (optional)</mat-label>
+              <input matInput type="number" formControlName="maxStudents" placeholder="e.g., 1000">
+              <mat-icon matSuffix>group</mat-icon>
+              <mat-error *ngIf="courseForm.get('maxStudents')?.touched">
+                {{ getErrorMessage('maxStudents') }}
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Thumbnail URL (optional)</mat-label>
+            <input matInput formControlName="thumbnail" placeholder="https://example.com/image.jpg">
+            <mat-icon matSuffix>image</mat-icon>
+            <mat-error *ngIf="courseForm.get('thumbnail')?.touched">
+              {{ getErrorMessage('thumbnail') }}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-checkbox formControlName="isActive" color="primary">
+            Course is Active
+          </mat-checkbox>
+        </div>
+
+        <!-- Tags Section -->
+        <div class="form-section">
+          <h3>
+            <mat-icon>local_offer</mat-icon>
+            Tags
+          </h3>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Add Tags</mat-label>
+            <mat-chip-grid #tagChipList aria-label="Course tags">
+              <mat-chip-row *ngFor="let tag of tags" (removed)="removeTag(tag)">
+                {{ tag }}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            </mat-chip-grid>
+            <input
+              placeholder="Type and press Enter..."
+              [matChipInputFor]="tagChipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="addTag($event)"
+            />
+          </mat-form-field>
+        </div>
+
+        <!-- Prerequisites Section -->
+        <div class="form-section">
+          <h3>
+            <mat-icon>check_circle</mat-icon>
+            Prerequisites
+          </h3>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Add Prerequisites</mat-label>
+            <mat-chip-grid #prereqChipList aria-label="Course prerequisites">
+              <mat-chip-row *ngFor="let prereq of prerequisites" (removed)="removePrerequisite(prereq)">
+                {{ prereq }}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            </mat-chip-grid>
+            <input
+              placeholder="Type and press Enter..."
+              [matChipInputFor]="prereqChipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="addPrerequisite($event)"
+            />
+          </mat-form-field>
+        </div>
+
+        <!-- Learning Outcomes Section -->
+        <div class="form-section">
+          <h3>
+            <mat-icon>school</mat-icon>
+            Learning Outcomes
+          </h3>
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Add Learning Outcomes</mat-label>
+            <mat-chip-grid #outcomeChipList aria-label="Learning outcomes">
+              <mat-chip-row *ngFor="let outcome of learningOutcomes" (removed)="removeLearningOutcome(outcome)">
+                {{ outcome }}
+                <button matChipRemove>
+                  <mat-icon>cancel</mat-icon>
+                </button>
+              </mat-chip-row>
+            </mat-chip-grid>
+            <input
+              placeholder="Type and press Enter..."
+              [matChipInputFor]="outcomeChipList"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+              (matChipInputTokenEnd)="addLearningOutcome($event)"
+            />
+          </mat-form-field>
+        </div>
+
+        <!-- Action Buttons -->
+        <div class="form-actions">
+          <button mat-raised-button type="button" (click)="onCancel()">
+            <mat-icon>cancel</mat-icon>
+            Cancel
+          </button>
+          <button 
+            mat-raised-button 
+            color="primary" 
+            type="submit"
+            [disabled]="courseForm.invalid || isLoading"
+          >
+            <mat-icon>{{ isEditMode ? 'save' : 'add_circle' }}</mat-icon>
+            {{ isEditMode ? 'Update Course' : 'Create Course' }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

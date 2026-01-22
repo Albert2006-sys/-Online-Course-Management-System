@@ -1,0 +1,258 @@
+<div class="feedback-container">
+  <!-- Header -->
+  <div class="header">
+    <div>
+      <h1>
+        <mat-icon>feedback</mat-icon>
+        Contact & Feedback
+      </h1>
+      <p class="subtitle">We'd love to hear from you! Share your thoughts, report issues, or request features.</p>
+    </div>
+    <button mat-button routerLink="/dashboard">
+      <mat-icon>arrow_back</mat-icon>
+      Back to Dashboard
+    </button>
+  </div>
+
+  <!-- Info Cards -->
+  <div class="info-cards">
+    <mat-card class="info-card">
+      <mat-icon>help</mat-icon>
+      <h3>Need Help?</h3>
+      <p>Use the general inquiry category for questions about courses or platform features.</p>
+    </mat-card>
+
+    <mat-card class="info-card">
+      <mat-icon>bug_report</mat-icon>
+      <h3>Found a Bug?</h3>
+      <p>Report technical issues to help us improve the platform for everyone.</p>
+    </mat-card>
+
+    <mat-card class="info-card">
+      <mat-icon>lightbulb</mat-icon>
+      <h3>Have an Idea?</h3>
+      <p>Share your feature requests and suggestions for new functionality.</p>
+    </mat-card>
+  </div>
+
+  <!-- Feedback Form -->
+  <mat-card class="form-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>mail</mat-icon>
+        Submit Your Feedback
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <form #feedbackForm="ngForm" (ngSubmit)="onSubmit(feedbackForm)" novalidate>
+        
+        <!-- Personal Information -->
+        <div class="form-section">
+          <h3>Your Information</h3>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Full Name</mat-label>
+              <input 
+                matInput 
+                name="name"
+                [(ngModel)]="feedbackModel.name"
+                #name="ngModel"
+                required
+                minlength="3"
+                maxlength="100"
+                placeholder="Enter your full name"
+              >
+              <mat-icon matSuffix>person</mat-icon>
+              <mat-error *ngIf="name.invalid && name.touched">
+                <span *ngIf="name.errors?.['required']">Name is required</span>
+                <span *ngIf="name.errors?.['minlength']">Name must be at least 3 characters</span>
+                <span *ngIf="name.errors?.['maxlength']">Name cannot exceed 100 characters</span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Email Address</mat-label>
+              <input 
+                matInput 
+                type="email"
+                name="email"
+                [(ngModel)]="feedbackModel.email"
+                #email="ngModel"
+                required
+                email
+                placeholder="your.email@example.com"
+              >
+              <mat-icon matSuffix>email</mat-icon>
+              <mat-error *ngIf="email.invalid && email.touched">
+                <span *ngIf="email.errors?.['required']">Email is required</span>
+                <span *ngIf="email.errors?.['email']">Please enter a valid email address</span>
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Feedback Details -->
+        <div class="form-section">
+          <h3>Feedback Details</h3>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline">
+              <mat-label>Category</mat-label>
+              <mat-select 
+                name="category"
+                [(ngModel)]="feedbackModel.category"
+                #category="ngModel"
+                required
+              >
+                <mat-option *ngFor="let cat of categories" [value]="cat">
+                  <mat-icon>{{ getCategoryIcon(cat) }}</mat-icon>
+                  {{ cat }}
+                </mat-option>
+              </mat-select>
+              <mat-icon matSuffix>category</mat-icon>
+              <mat-error *ngIf="category.invalid && category.touched">
+                Category is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Priority</mat-label>
+              <mat-select 
+                name="priority"
+                [(ngModel)]="feedbackModel.priority"
+                #priority="ngModel"
+                required
+              >
+                <mat-option *ngFor="let pri of priorities" [value]="pri">
+                  {{ pri }}
+                </mat-option>
+              </mat-select>
+              <mat-icon matSuffix>flag</mat-icon>
+              <mat-error *ngIf="priority.invalid && priority.touched">
+                Priority is required
+              </mat-error>
+              <mat-hint>Select the urgency level</mat-hint>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Message</mat-label>
+              <textarea 
+                matInput
+                name="message"
+                [(ngModel)]="feedbackModel.message"
+                #message="ngModel"
+                required
+                minlength="20"
+                maxlength="1000"
+                rows="8"
+                placeholder="Please provide detailed information about your feedback, question, or issue..."
+              ></textarea>
+              <mat-icon matSuffix>message</mat-icon>
+              <mat-error *ngIf="message.invalid && message.touched">
+                <span *ngIf="message.errors?.['required']">Message is required</span>
+                <span *ngIf="message.errors?.['minlength']">Message must be at least 20 characters</span>
+                <span *ngIf="message.errors?.['maxlength']">Message cannot exceed 1000 characters</span>
+              </mat-error>
+              <mat-hint align="end">{{ feedbackModel.message.length }}/1000</mat-hint>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <!-- Form Summary -->
+        <div class="form-summary" *ngIf="feedbackForm.touched">
+          <div class="summary-header">
+            <mat-icon>checklist</mat-icon>
+            <span>Form Status</span>
+          </div>
+          <div class="summary-items">
+            <div class="summary-item" [class.valid]="name.valid" [class.invalid]="name.invalid && name.touched">
+              <mat-icon>{{ name.valid ? 'check_circle' : 'cancel' }}</mat-icon>
+              <span>Name</span>
+            </div>
+            <div class="summary-item" [class.valid]="email.valid" [class.invalid]="email.invalid && email.touched">
+              <mat-icon>{{ email.valid ? 'check_circle' : 'cancel' }}</mat-icon>
+              <span>Email</span>
+            </div>
+            <div class="summary-item" [class.valid]="category.valid" [class.invalid]="category.invalid && category.touched">
+              <mat-icon>{{ category.valid ? 'check_circle' : 'cancel' }}</mat-icon>
+              <span>Category</span>
+            </div>
+            <div class="summary-item" [class.valid]="priority.valid" [class.invalid]="priority.invalid && priority.touched">
+              <mat-icon>{{ priority.valid ? 'check_circle' : 'cancel' }}</mat-icon>
+              <span>Priority</span>
+            </div>
+            <div class="summary-item" [class.valid]="message.valid" [class.invalid]="message.invalid && message.touched">
+              <mat-icon>{{ message.valid ? 'check_circle' : 'cancel' }}</mat-icon>
+              <span>Message</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button 
+            mat-raised-button 
+            type="button" 
+            (click)="resetForm(feedbackForm)"
+            [disabled]="isSubmitting"
+          >
+            <mat-icon>refresh</mat-icon>
+            Reset Form
+          </button>
+          
+          <button 
+            mat-raised-button 
+            color="primary" 
+            type="submit" 
+            [disabled]="feedbackForm.invalid || isSubmitting"
+          >
+            <mat-spinner *ngIf="isSubmitting" diameter="20"></mat-spinner>
+            <mat-icon *ngIf="!isSubmitting">send</mat-icon>
+            {{ isSubmitting ? 'Submitting...' : 'Submit Feedback' }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Contact Information -->
+  <mat-card class="contact-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>contact_support</mat-icon>
+        Other Ways to Reach Us
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="contact-methods">
+        <div class="contact-method">
+          <mat-icon>email</mat-icon>
+          <div>
+            <h4>Email</h4>
+            <p>support&#64;onlinecourse.com</p>
+          </div>
+        </div>
+        <div class="contact-method">
+          <mat-icon>phone</mat-icon>
+          <div>
+            <h4>Phone</h4>
+            <p>+1 (555) 123-4567</p>
+          </div>
+        </div>
+        <div class="contact-method">
+          <mat-icon>schedule</mat-icon>
+          <div>
+            <h4>Business Hours</h4>
+            <p>Mon-Fri: 9AM - 6PM EST</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

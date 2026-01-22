@@ -1,0 +1,221 @@
+<div class="course-detail-container" *ngIf="!isLoading && course">
+  <!-- Header Actions -->
+  <div class="header-actions">
+    <button mat-raised-button (click)="goBack()">
+      <mat-icon>arrow_back</mat-icon>
+      Back to Courses
+    </button>
+    <div class="action-buttons">
+      <button mat-raised-button color="primary" (click)="editCourse()">
+        <mat-icon>edit</mat-icon>
+        Edit Course
+      </button>
+      <button 
+        mat-raised-button 
+        [color]="course.isActive ? 'warn' : 'accent'"
+        (click)="toggleStatus()"
+      >
+        <mat-icon>{{ course.isActive ? 'block' : 'check_circle' }}</mat-icon>
+        {{ course.isActive ? 'Deactivate' : 'Activate' }}
+      </button>
+      <button mat-raised-button color="warn" (click)="deleteCourse()">
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
+    </div>
+  </div>
+
+  <!-- Course Info Card -->
+  <mat-card class="course-info-card">
+    <mat-card-header>
+      <div class="course-header">
+        <div>
+          <mat-card-title>{{ course.title }}</mat-card-title>
+          <mat-card-subtitle>
+            <mat-icon>person</mat-icon>
+            Instructor: {{ course.instructor }}
+          </mat-card-subtitle>
+        </div>
+        <mat-chip [class]="course.isActive ? 'status-active' : 'status-inactive'">
+          {{ course.isActive ? 'Active' : 'Inactive' }}
+        </mat-chip>
+      </div>
+    </mat-card-header>
+
+    <mat-card-content>
+      <!-- Course Details Grid -->
+      <div class="details-grid">
+        <div class="detail-item">
+          <mat-icon>category</mat-icon>
+          <div>
+            <span class="label">Category</span>
+            <span class="value">{{ course.category }}</span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>signal_cellular_alt</mat-icon>
+          <div>
+            <span class="label">Level</span>
+            <span class="value">{{ course.level }}</span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>schedule</mat-icon>
+          <div>
+            <span class="label">Duration</span>
+            <span class="value">{{ course.duration }} hours</span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>attach_money</mat-icon>
+          <div>
+            <span class="label">Price</span>
+            <span class="value price">${{ course.price.toFixed(2) }}</span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>people</mat-icon>
+          <div>
+            <span class="label">Enrollments</span>
+            <span class="value">{{ course.enrollmentCount }}</span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>trending_up</mat-icon>
+          <div>
+            <span class="label">Popularity</span>
+            <span class="value">{{ course.popularity }}%</span>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>event</mat-icon>
+          <div>
+            <span class="label">Created</span>
+            <span class="value">{{ course.createdAt | date: 'mediumDate' }}</span>
+          </div>
+        </div>
+
+        <div class="detail-item" *ngIf="course.maxStudents">
+          <mat-icon>group</mat-icon>
+          <div>
+            <span class="label">Max Students</span>
+            <span class="value">{{ course.maxStudents }}</span>
+          </div>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <!-- Description -->
+      <div class="description-section">
+        <h3><mat-icon>description</mat-icon> Description</h3>
+        <p>{{ course.description }}</p>
+      </div>
+
+      <!-- Tags -->
+      <div class="tags-section" *ngIf="course.tags && course.tags.length > 0">
+        <h3><mat-icon>local_offer</mat-icon> Tags</h3>
+        <div class="tags">
+          <mat-chip *ngFor="let tag of course.tags">{{ tag }}</mat-chip>
+        </div>
+      </div>
+
+      <!-- Prerequisites -->
+      <div class="prerequisites-section" *ngIf="course.prerequisites && course.prerequisites.length > 0">
+        <h3><mat-icon>check_circle</mat-icon> Prerequisites</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let prereq of course.prerequisites">
+            <mat-icon matListItemIcon>check</mat-icon>
+            <div matListItemTitle>{{ prereq }}</div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <!-- Learning Outcomes -->
+      <div class="outcomes-section" *ngIf="course.learningOutcomes && course.learningOutcomes.length > 0">
+        <h3><mat-icon>school</mat-icon> Learning Outcomes</h3>
+        <mat-list>
+          <mat-list-item *ngFor="let outcome of course.learningOutcomes">
+            <mat-icon matListItemIcon color="primary">star</mat-icon>
+            <div matListItemTitle>{{ outcome }}</div>
+          </mat-list-item>
+        </mat-list>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Statistics Card -->
+  <mat-card class="stats-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>assessment</mat-icon>
+        Course Statistics
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.totalEnrollments }}</div>
+          <div class="stat-label">Total Enrollments</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.activeEnrollments }}</div>
+          <div class="stat-label">Active</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.completedEnrollments }}</div>
+          <div class="stat-label">Completed</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.averageProgress.toFixed(1) }}%</div>
+          <div class="stat-label">Avg Progress</div>
+        </div>
+        <div class="stat-item" *ngIf="stats.averageGrade > 0">
+          <div class="stat-value">{{ stats.averageGrade.toFixed(1) }}</div>
+          <div class="stat-label">Avg Grade</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">{{ stats.completionRate.toFixed(1) }}%</div>
+          <div class="stat-label">Completion Rate</div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Enrollments Tab -->
+  <mat-card class="enrollments-card" *ngIf="enrollments.length > 0">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>people</mat-icon>
+        Recent Enrollments
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-list>
+        <mat-list-item *ngFor="let enrollment of enrollments.slice(0, 10)">
+          <mat-icon matListItemIcon>person</mat-icon>
+          <div matListItemTitle>Student ID: {{ enrollment.studentId }}</div>
+          <div matListItemLine>
+            Enrolled: {{ enrollment.enrollmentDate | date: 'short' }} | 
+            Progress: {{ enrollment.progress }}%
+          </div>
+          <mat-chip matListItemMeta [class]="getStatusColor(enrollment.status)">
+            {{ enrollment.status }}
+          </mat-chip>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- Loading Spinner -->
+<div *ngIf="isLoading" class="loading-container">
+  <mat-spinner></mat-spinner>
+  <p>Loading course details...</p>
+</div>

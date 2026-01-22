@@ -1,0 +1,299 @@
+<div class="student-detail-container" *ngIf="!isLoading && student">
+  <!-- Header Actions -->
+  <div class="header-actions">
+    <button mat-button routerLink="/students">
+      <mat-icon>arrow_back</mat-icon>
+      Back to Students
+    </button>
+    <div class="action-buttons">
+      <button mat-raised-button color="primary" (click)="editStudent()">
+        <mat-icon>edit</mat-icon>
+        Edit Student
+      </button>
+      <button mat-raised-button color="warn" (click)="deleteStudent()">
+        <mat-icon>delete</mat-icon>
+        Delete
+      </button>
+    </div>
+  </div>
+
+  <!-- Student Profile Card -->
+  <mat-card class="profile-card">
+    <mat-card-header>
+      <div class="profile-header">
+        <img *ngIf="student.profileImage" [src]="student.profileImage" alt="Profile" class="profile-image">
+        <mat-icon *ngIf="!student.profileImage" class="profile-icon">account_circle</mat-icon>
+        <div class="profile-info">
+          <h2>{{ student.name }}</h2>
+          <p class="email">{{ student.email }}</p>
+          <mat-chip [class]="getStatusColor(student.status)">
+            {{ student.status }}
+          </mat-chip>
+        </div>
+      </div>
+    </mat-card-header>
+
+    <mat-divider></mat-divider>
+
+    <mat-card-content>
+      <div class="details-grid">
+        <div class="detail-item">
+          <mat-icon>phone</mat-icon>
+          <div>
+            <label>Phone</label>
+            <p>{{ student.phone || 'N/A' }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>cake</mat-icon>
+          <div>
+            <label>Date of Birth</label>
+            <p>{{ student.dateOfBirth | date: 'longDate' }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>location_on</mat-icon>
+          <div>
+            <label>Address</label>
+            <p>{{ formatAddress() }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>school</mat-icon>
+          <div>
+            <label>Education Level</label>
+            <p>{{ student.educationLevel }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>event</mat-icon>
+          <div>
+            <label>Registered On</label>
+            <p>{{ student.createdAt | date: 'longDate' }}</p>
+          </div>
+        </div>
+
+        <div class="detail-item">
+          <mat-icon>update</mat-icon>
+          <div>
+            <label>Last Updated</label>
+            <p>{{ student.updatedAt | date: 'longDate' }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interests -->
+      <div class="interests-section" *ngIf="student.interests && student.interests.length > 0">
+        <h3>
+          <mat-icon>interests</mat-icon>
+          Interests
+        </h3>
+        <div class="chip-list">
+          <mat-chip *ngFor="let interest of student.interests" class="interest-chip">
+            {{ interest }}
+          </mat-chip>
+        </div>
+      </div>
+
+      <!-- Status Update -->
+      <div class="status-update-section">
+        <h3>Update Status</h3>
+        <div class="status-buttons">
+          <button 
+            mat-stroked-button 
+            [class.active]="student.status === StudentStatus.ACTIVE"
+            (click)="updateStatus(StudentStatus.ACTIVE)"
+          >
+            Active
+          </button>
+          <button 
+            mat-stroked-button 
+            [class.active]="student.status === StudentStatus.INACTIVE"
+            (click)="updateStatus(StudentStatus.INACTIVE)"
+          >
+            Inactive
+          </button>
+          <button 
+            mat-stroked-button 
+            [class.active]="student.status === StudentStatus.SUSPENDED"
+            (click)="updateStatus(StudentStatus.SUSPENDED)"
+          >
+            Suspended
+          </button>
+          <button 
+            mat-stroked-button 
+            [class.active]="student.status === StudentStatus.GRADUATED"
+            (click)="updateStatus(StudentStatus.GRADUATED)"
+          >
+            Graduated
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Statistics Cards -->
+  <div class="stats-grid">
+    <mat-card class="stat-card">
+      <div class="stat-icon total">
+        <mat-icon>school</mat-icon>
+      </div>
+      <div class="stat-content">
+        <h3>{{ stats.totalEnrollments }}</h3>
+        <p>Total Enrollments</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <div class="stat-icon active">
+        <mat-icon>play_circle</mat-icon>
+      </div>
+      <div class="stat-content">
+        <h3>{{ stats.activeEnrollments }}</h3>
+        <p>Active Courses</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <div class="stat-icon completed">
+        <mat-icon>check_circle</mat-icon>
+      </div>
+      <div class="stat-content">
+        <h3>{{ stats.completedCourses }}</h3>
+        <p>Completed Courses</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <div class="stat-icon progress">
+        <mat-icon>trending_up</mat-icon>
+      </div>
+      <div class="stat-content">
+        <h3>{{ stats.averageProgress.toFixed(0) }}%</h3>
+        <p>Avg Progress</p>
+      </div>
+    </mat-card>
+
+    <mat-card class="stat-card">
+      <div class="stat-icon grade">
+        <mat-icon>grade</mat-icon>
+      </div>
+      <div class="stat-content">
+        <h3>{{ stats.averageGrade > 0 ? stats.averageGrade.toFixed(1) : 'N/A' }}</h3>
+        <p>Average Grade</p>
+      </div>
+    </mat-card>
+  </div>
+
+  <!-- Enrollment History -->
+  <mat-card class="enrollments-card">
+    <mat-card-header>
+      <mat-card-title>
+        <mat-icon>history_edu</mat-icon>
+        Enrollment History
+      </mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      <div class="table-container" *ngIf="enrollments.length > 0; else noEnrollments">
+        <table mat-table [dataSource]="enrollments" class="enrollments-table">
+          
+          <!-- Course Column -->
+          <ng-container matColumnDef="course">
+            <th mat-header-cell *matHeaderCellDef>Course</th>
+            <td mat-cell *matCellDef="let enrollment">
+              <a [routerLink]="['/courses', enrollment.courseId]" class="course-link">
+                {{ enrollment.courseTitle }}
+              </a>
+            </td>
+          </ng-container>
+
+          <!-- Enrollment Date Column -->
+          <ng-container matColumnDef="enrollmentDate">
+            <th mat-header-cell *matHeaderCellDef>Enrolled On</th>
+            <td mat-cell *matCellDef="let enrollment">
+              {{ enrollment.enrollmentDate | date: 'mediumDate' }}
+            </td>
+          </ng-container>
+
+          <!-- Status Column -->
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Status</th>
+            <td mat-cell *matCellDef="let enrollment">
+              <mat-chip [class]="getStatusColor(enrollment.status)">
+                {{ enrollment.status }}
+              </mat-chip>
+            </td>
+          </ng-container>
+
+          <!-- Progress Column -->
+          <ng-container matColumnDef="progress">
+            <th mat-header-cell *matHeaderCellDef>Progress</th>
+            <td mat-cell *matCellDef="let enrollment">
+              <div class="progress-container">
+                <div class="progress-bar">
+                  <div 
+                    class="progress-fill" 
+                    [style.width.%]="enrollment.progress"
+                    [class]="getProgressColor(enrollment.progress)"
+                  ></div>
+                </div>
+                <span class="progress-text">{{ enrollment.progress }}%</span>
+              </div>
+            </td>
+          </ng-container>
+
+          <!-- Grade Column -->
+          <ng-container matColumnDef="grade">
+            <th mat-header-cell *matHeaderCellDef>Grade</th>
+            <td mat-cell *matCellDef="let enrollment">
+              <span [class]="getGradeColor(enrollment.grade)">
+                {{ enrollment.grade !== undefined ? enrollment.grade.toFixed(1) : 'N/A' }}
+              </span>
+            </td>
+          </ng-container>
+
+          <!-- Actions Column -->
+          <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let enrollment">
+              <button 
+                mat-icon-button 
+                color="warn" 
+                (click)="unenrollFromCourse(enrollment)"
+                matTooltip="Unenroll"
+                *ngIf="enrollment.status !== EnrollmentStatus.COMPLETED"
+              >
+                <mat-icon>remove_circle</mat-icon>
+              </button>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="enrollmentColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: enrollmentColumns;"></tr>
+        </table>
+      </div>
+
+      <ng-template #noEnrollments>
+        <div class="no-enrollments">
+          <mat-icon>school_off</mat-icon>
+          <p>No enrollments found for this student.</p>
+          <button mat-raised-button color="primary" routerLink="/enrollments/new">
+            <mat-icon>add</mat-icon>
+            Enroll in Course
+          </button>
+        </div>
+      </ng-template>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+<!-- Loading Spinner -->
+<div *ngIf="isLoading" class="loading-container">
+  <mat-spinner></mat-spinner>
+  <p>Loading student details...</p>
+</div>

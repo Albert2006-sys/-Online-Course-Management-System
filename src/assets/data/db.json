@@ -1,0 +1,1000 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "title": "Angular 17 Complete Guide - From Beginner to Advanced",
+      "description": "Master Angular 17 with hands-on projects including components, services, routing, forms, and state management. Build production-ready applications.",
+      "category": "Web Development",
+      "level": "Intermediate",
+      "duration": 40,
+      "price": 89.99,
+      "instructor": "Sarah Johnson",
+      "thumbnail": "https://via.placeholder.com/300x200?text=Angular+17",
+      "createdAt": "2025-01-15T10:00:00Z",
+      "updatedAt": "2025-12-20T15:30:00Z",
+      "popularity": 95,
+      "enrollmentCount": 1247,
+      "isActive": true,
+      "tags": [
+        "Angular",
+        "TypeScript",
+        "Web Development",
+        "Frontend"
+      ],
+      "prerequisites": [
+        "HTML",
+        "CSS",
+        "JavaScript basics"
+      ],
+      "learningOutcomes": [
+        "Build modern Angular applications",
+        "Understand component-based architecture",
+        "Master RxJS and reactive programming",
+        "Implement authentication and routing"
+      ],
+      "maxStudents": 2000
+    },
+    {
+      "id": 2,
+      "title": "Python for Data Science and Machine Learning",
+      "description": "Comprehensive Python course covering NumPy, Pandas, Matplotlib, Scikit-learn, and TensorFlow for data analysis and machine learning.",
+      "category": "Data Science",
+      "level": "Beginner",
+      "duration": 50,
+      "price": 99.99,
+      "instructor": "Dr. Michael Chen",
+      "thumbnail": "https://via.placeholder.com/300x200?text=Python+Data+Science",
+      "createdAt": "2025-02-01T09:00:00Z",
+      "updatedAt": "2025-12-18T11:20:00Z",
+      "popularity": 92,
+      "enrollmentCount": 2103,
+      "isActive": true,
+      "tags": [
+        "Python",
+        "Data Science",
+        "Machine Learning",
+        "AI"
+      ],
+      "prerequisites": [
+        "Basic programming knowledge"
+      ],
+      "learningOutcomes": [
+        "Master Python for data analysis",
+        "Build machine learning models",
+        "Visualize data effectively",
+        "Deploy ML models to production"
+      ],
+      "maxStudents": 3000
+    },
+    {
+      "id": 3,
+      "title": "AWS Cloud Practitioner - Complete Certification Course",
+      "description": "Prepare for AWS Cloud Practitioner certification with comprehensive coverage of EC2, S3, RDS, Lambda, and cloud architecture best practices.",
+      "category": "Cloud Computing",
+      "level": "Beginner",
+      "duration": 30,
+      "price": 79.99,
+      "instructor": "David Martinez",
+      "thumbnail": "https://via.placeholder.com/300x200?text=AWS+Cloud",
+      "createdAt": "2025-03-10T08:00:00Z",
+      "updatedAt": "2025-12-22T09:45:00Z",
+      "popularity": 88,
+      "enrollmentCount": 1856,
+      "isActive": true,
+      "tags": [
+        "AWS",
+        "Cloud Computing",
+        "DevOps",
+        "Certification"
+      ],
+      "prerequisites": [
+        "Basic IT knowledge"
+      ],
+      "learningOutcomes": [
+        "Understand AWS core services",
+        "Design scalable cloud solutions",
+        "Pass AWS certification exam",
+        "Implement security best practices"
+      ],
+      "maxStudents": 2500
+    },
+    {
+      "id": 4,
+      "title": "React Native - Build Cross-Platform Mobile Apps",
+      "description": "Learn to build iOS and Android applications using React Native, Redux, Navigation, and native modules integration.",
+      "category": "Mobile Development",
+      "level": "Intermediate",
+      "duration": 35,
+      "price": 94.99,
+      "instructor": "Emily Rodriguez",
+      "thumbnail": "https://via.placeholder.com/300x200?text=React+Native",
+      "createdAt": "2025-04-05T10:30:00Z",
+      "updatedAt": "2025-12-15T14:00:00Z",
+      "popularity": 85,
+      "enrollmentCount": 1432,
+      "isActive": true,
+      "tags": [
+        "React Native",
+        "Mobile Development",
+        "iOS",
+        "Android"
+      ],
+      "prerequisites": [
+        "JavaScript",
+        "React basics"
+      ],
+      "learningOutcomes": [
+        "Build native mobile apps",
+        "Implement navigation and state management",
+        "Integrate device features",
+        "Deploy to app stores"
+      ],
+      "maxStudents": 1500
+    },
+    {
+      "id": 5,
+      "title": "Cybersecurity Fundamentals - Ethical Hacking",
+      "description": "Learn penetration testing, network security, vulnerability assessment, and ethical hacking techniques to secure systems.",
+      "category": "Cybersecurity",
+      "level": "Advanced",
+      "duration": 45,
+      "price": 129.99,
+      "instructor": "James Anderson",
+      "thumbnail": "https://via.placeholder.com/300x200?text=Cybersecurity",
+      "createdAt": "2025-05-20T07:00:00Z",
+      "updatedAt": "2025-12-19T16:30:00Z",
+      "popularity": 90,
+      "enrollmentCount": 987,
+      "isActive": true,
+      "tags": [
+        "Cybersecurity",
+        "Ethical Hacking",
+        "Security",
+        "Networking"
+      ],
+      "prerequisites": [
+        "Networking fundamentals",
+        "Linux basics"
+      ],
+      "learningOutcomes": [
+        "Perform security assessments",
+        "Identify and exploit vulnerabilities",
+        "Implement security measures",
+        "Prepare for CEH certification"
+      ],
+      "maxStudents": 1000
+    },
+    {
+      "id": 6,
+      "title": "Docker & Kubernetes - DevOps Masterclass",
+      "description": "Master containerization with Docker and orchestration with Kubernetes. Learn CI/CD pipelines, microservices, and cloud deployment.",
+      "category": "DevOps",
+      "level": "Intermediate",
+      "duration": 38,
+      "price": 109.99,
+      "instructor": "Lisa Thompson",
+      "thumbnail": "https://via.placeholder.com/300x200?text=Docker+Kubernetes",
+      "createdAt": "2025-06-12T09:30:00Z",
+      "updatedAt": "2025-12-21T10:15:00Z",
+      "popularity": 87,
+      "enrollmentCount": 1654,
+      "isActive": true,
+      "tags": [
+        "Docker",
+        "Kubernetes",
+        "DevOps",
+        "CI/CD"
+      ],
+      "prerequisites": [
+        "Linux basics",
+        "Basic programming"
+      ],
+      "learningOutcomes": [
+        "Containerize applications with Docker",
+        "Orchestrate containers with Kubernetes",
+        "Build CI/CD pipelines",
+        "Deploy microservices to cloud"
+      ],
+      "maxStudents": 2000
+    },
+    {
+      "id": 7,
+      "title": "UI/UX Design - Complete Design System Course",
+      "description": "Learn user interface and user experience design principles, Figma, prototyping, user research, and design thinking methodology.",
+      "category": "UI/UX Design",
+      "level": "Beginner",
+      "duration": 28,
+      "price": 74.99,
+      "instructor": "Sophia Lee",
+      "thumbnail": "https://via.placeholder.com/300x200?text=UI+UX+Design",
+      "createdAt": "2025-07-08T11:00:00Z",
+      "updatedAt": "2025-12-17T13:45:00Z",
+      "popularity": 83,
+      "enrollmentCount": 1298,
+      "isActive": true,
+      "tags": [
+        "UI/UX",
+        "Design",
+        "Figma",
+        "Prototyping"
+      ],
+      "prerequisites": [
+        "None"
+      ],
+      "learningOutcomes": [
+        "Design user-centered interfaces",
+        "Create interactive prototypes",
+        "Conduct user research",
+        "Build comprehensive design systems"
+      ],
+      "maxStudents": 1800
+    },
+    {
+      "id": 8,
+      "title": "MongoDB Database Design and Administration",
+      "description": "Master MongoDB database design, aggregation pipeline, indexing, replication, sharding, and performance optimization.",
+      "category": "Database",
+      "level": "Intermediate",
+      "duration": 32,
+      "price": 84.99,
+      "instructor": "Robert Kim",
+      "thumbnail": "https://via.placeholder.com/300x200?text=MongoDB",
+      "createdAt": "2025-08-15T08:30:00Z",
+      "updatedAt": "2025-12-20T12:00:00Z",
+      "popularity": 79,
+      "enrollmentCount": 876,
+      "isActive": true,
+      "tags": [
+        "MongoDB",
+        "Database",
+        "NoSQL",
+        "Backend"
+      ],
+      "prerequisites": [
+        "Basic database concepts"
+      ],
+      "learningOutcomes": [
+        "Design efficient database schemas",
+        "Optimize query performance",
+        "Implement replication and sharding",
+        "Manage production databases"
+      ],
+      "maxStudents": 1200
+    },
+    {
+      "id": 9,
+      "title": "Blockchain Development - Smart Contracts with Solidity",
+      "description": "Learn blockchain fundamentals, Ethereum development, Solidity programming, and build decentralized applications (DApps).",
+      "category": "Blockchain",
+      "level": "Advanced",
+      "duration": 42,
+      "price": 139.99,
+      "instructor": "Alexandra White",
+      "thumbnail": "https://via.placeholder.com/300x200?text=Blockchain",
+      "createdAt": "2025-09-01T10:00:00Z",
+      "updatedAt": "2025-12-16T15:20:00Z",
+      "popularity": 91,
+      "enrollmentCount": 743,
+      "isActive": true,
+      "tags": [
+        "Blockchain",
+        "Solidity",
+        "Ethereum",
+        "Web3"
+      ],
+      "prerequisites": [
+        "JavaScript",
+        "Programming fundamentals"
+      ],
+      "learningOutcomes": [
+        "Develop smart contracts",
+        "Build decentralized applications",
+        "Understand blockchain architecture",
+        "Deploy to Ethereum network"
+      ],
+      "maxStudents": 800
+    },
+    {
+      "id": 10,
+      "title": "JavaScript ES2024 - Modern Web Development",
+      "description": "Master modern JavaScript including ES6+, async/await, modules, closures, prototypes, and functional programming patterns.",
+      "category": "Programming",
+      "level": "Beginner",
+      "duration": 25,
+      "price": 69.99,
+      "instructor": "Daniel Brown",
+      "thumbnail": "https://via.placeholder.com/300x200?text=JavaScript",
+      "createdAt": "2025-10-10T09:00:00Z",
+      "updatedAt": "2025-12-23T11:30:00Z",
+      "popularity": 94,
+      "enrollmentCount": 2456,
+      "isActive": true,
+      "tags": [
+        "JavaScript",
+        "ES6",
+        "Programming",
+        "Web Development"
+      ],
+      "prerequisites": [
+        "HTML basics"
+      ],
+      "learningOutcomes": [
+        "Master modern JavaScript syntax",
+        "Write clean, efficient code",
+        "Understand asynchronous programming",
+        "Build interactive web applications"
+      ],
+      "maxStudents": 3500
+    }
+  ],
+  "students": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@email.com",
+      "phone": "+1-555-0101",
+      "dateOfBirth": "1995-03-15",
+      "address": {
+        "street": "123 Main St",
+        "city": "New York",
+        "state": "NY",
+        "country": "USA",
+        "zipCode": "10001"
+      },
+      "enrolledCourses": [
+        1,
+        3,
+        10
+      ],
+      "createdAt": "2025-01-20T14:30:00Z",
+      "updatedAt": "2025-12-15T09:20:00Z",
+      "status": "Active",
+      "profileImage": "https://i.pravatar.cc/150?img=1",
+      "bio": "Passionate software developer looking to expand skills in web development and cloud computing.",
+      "educationLevel": "Bachelor's Degree",
+      "interests": [
+        "Web Development",
+        "Cloud Computing",
+        "JavaScript"
+      ],
+      "totalCoursesCompleted": 5,
+      "averageGrade": 87.5
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@email.com",
+      "phone": "+1-555-0102",
+      "dateOfBirth": "1998-07-22",
+      "address": {
+        "city": "San Francisco",
+        "state": "CA",
+        "country": "USA",
+        "zipCode": "94102"
+      },
+      "enrolledCourses": [
+        2,
+        5,
+        6
+      ],
+      "createdAt": "2025-02-05T10:15:00Z",
+      "updatedAt": "2025-12-18T16:45:00Z",
+      "status": "Active",
+      "profileImage": "https://i.pravatar.cc/150?img=5",
+      "bio": "Data science enthusiast with a passion for machine learning and analytics.",
+      "educationLevel": "Master's Degree",
+      "interests": [
+        "Data Science",
+        "Machine Learning",
+        "Python"
+      ],
+      "totalCoursesCompleted": 8,
+      "averageGrade": 92.3
+    },
+    {
+      "id": 3,
+      "name": "Mike Johnson",
+      "email": "mike.johnson@email.com",
+      "phone": "+1-555-0103",
+      "dateOfBirth": "1992-11-08",
+      "address": {
+        "city": "Austin",
+        "state": "TX",
+        "country": "USA",
+        "zipCode": "78701"
+      },
+      "enrolledCourses": [
+        4,
+        7
+      ],
+      "createdAt": "2025-03-12T11:00:00Z",
+      "updatedAt": "2025-12-20T14:30:00Z",
+      "status": "Active",
+      "profileImage": "https://i.pravatar.cc/150?img=3",
+      "bio": "Mobile developer focusing on cross-platform solutions and UX design.",
+      "educationLevel": "Bachelor's Degree",
+      "interests": [
+        "Mobile Development",
+        "UI/UX Design"
+      ],
+      "totalCoursesCompleted": 3,
+      "averageGrade": 85.7
+    },
+    {
+      "id": 4,
+      "name": "Emily Davis",
+      "email": "emily.davis@email.com",
+      "phone": "+1-555-0104",
+      "dateOfBirth": "1996-05-30",
+      "address": {
+        "city": "Seattle",
+        "state": "WA",
+        "country": "USA",
+        "zipCode": "98101"
+      },
+      "enrolledCourses": [
+        1,
+        8,
+        9
+      ],
+      "createdAt": "2025-04-18T09:45:00Z",
+      "updatedAt": "2025-12-19T10:15:00Z",
+      "status": "Active",
+      "profileImage": "https://i.pravatar.cc/150?img=9",
+      "bio": "Full-stack developer interested in blockchain and database technologies.",
+      "educationLevel": "Bachelor's Degree",
+      "interests": [
+        "Blockchain",
+        "Database",
+        "Web Development"
+      ],
+      "totalCoursesCompleted": 6,
+      "averageGrade": 90.2
+    },
+    {
+      "id": 5,
+      "name": "Chris Wilson",
+      "email": "chris.wilson@email.com",
+      "phone": "+1-555-0105",
+      "dateOfBirth": "1994-09-12",
+      "address": {
+        "city": "Boston",
+        "state": "MA",
+        "country": "USA",
+        "zipCode": "02101"
+      },
+      "enrolledCourses": [
+        2,
+        10
+      ],
+      "createdAt": "2025-05-25T13:20:00Z",
+      "updatedAt": "2025-12-22T11:50:00Z",
+      "status": "Active",
+      "profileImage": "https://i.pravatar.cc/150?img=7",
+      "bio": "Data analyst transitioning to data science and programming.",
+      "educationLevel": "Master's Degree",
+      "interests": [
+        "Data Science",
+        "Programming",
+        "Analytics"
+      ],
+      "totalCoursesCompleted": 4,
+      "averageGrade": 88.9
+    },
+    {
+      "id": 6,
+      "name": "Sarah Martinez",
+      "email": "sarah.martinez@email.com",
+      "phone": "+1-555-0106",
+      "dateOfBirth": "1997-02-18",
+      "address": {
+        "city": "Denver",
+        "state": "CO",
+        "country": "USA",
+        "zipCode": "80201"
+      },
+      "enrolledCourses": [
+        3,
+        6
+      ],
+      "createdAt": "2025-06-30T15:30:00Z",
+      "updatedAt": "2025-12-17T13:25:00Z",
+      "status": "Active",
+      "profileImage": "https://i.pravatar.cc/150?img=10",
+      "bio": "DevOps engineer focusing on cloud infrastructure and automation.",
+      "educationLevel": "Bachelor's Degree",
+      "interests": [
+        "Cloud Computing",
+        "DevOps",
+        "Automation"
+      ],
+      "totalCoursesCompleted": 7,
+      "averageGrade": 91.8
+    },
+    {
+      "id": 7,
+      "name": "David Lee",
+      "email": "david.lee@email.com",
+      "phone": "+1-555-0107",
+      "dateOfBirth": "1993-12-05",
+      "address": {
+        "city": "Chicago",
+        "state": "IL",
+        "country": "USA",
+        "zipCode": "60601"
+      },
+      "enrolledCourses": [
+        5
+      ],
+      "createdAt": "2025-07-14T08:00:00Z",
+      "updatedAt": "2025-12-21T09:40:00Z",
+      "status": "Active",
+      "profileImage": "https://i.pravatar.cc/150?img=12",
+      "bio": "Security analyst specializing in ethical hacking and penetration testing.",
+      "educationLevel": "Master's Degree",
+      "interests": [
+        "Cybersecurity",
+        "Ethical Hacking",
+        "Security"
+      ],
+      "totalCoursesCompleted": 9,
+      "averageGrade": 93.5
+    },
+    {
+      "id": 8,
+      "name": "Jessica Taylor",
+      "email": "jessica.taylor@email.com",
+      "phone": "+1-555-0108",
+      "dateOfBirth": "1999-08-28",
+      "address": {
+        "city": "Miami",
+        "state": "FL",
+        "country": "USA",
+        "zipCode": "33101"
+      },
+      "enrolledCourses": [
+        7,
+        10
+      ],
+      "createdAt": "2025-08-20T12:10:00Z",
+      "updatedAt": "2025-12-16T15:55:00Z",
+      "status": "Active",
+      "profileImage": "https://i.pravatar.cc/150?img=16",
+      "bio": "Designer and front-end developer passionate about user experience.",
+      "educationLevel": "Associate Degree",
+      "interests": [
+        "UI/UX Design",
+        "Web Development",
+        "JavaScript"
+      ],
+      "totalCoursesCompleted": 2,
+      "averageGrade": 86.4
+    },
+    {
+      "id": 9,
+      "name": "Ryan Anderson",
+      "email": "ryan.anderson@email.com",
+      "phone": "+1-555-0109",
+      "dateOfBirth": "1991-04-14",
+      "address": {
+        "city": "Portland",
+        "state": "OR",
+        "country": "USA",
+        "zipCode": "97201"
+      },
+      "enrolledCourses": [
+        1,
+        4,
+        8
+      ],
+      "createdAt": "2025-09-05T10:30:00Z",
+      "updatedAt": "2025-12-23T12:15:00Z",
+      "status": "Active",
+      "profileImage": "https://i.pravatar.cc/150?img=13",
+      "bio": "Software engineer building scalable web and mobile applications.",
+      "educationLevel": "Bachelor's Degree",
+      "interests": [
+        "Web Development",
+        "Mobile Development",
+        "Database"
+      ],
+      "totalCoursesCompleted": 5,
+      "averageGrade": 89.1
+    },
+    {
+      "id": 10,
+      "name": "Amanda White",
+      "email": "amanda.white@email.com",
+      "phone": "+1-555-0110",
+      "dateOfBirth": "2000-01-25",
+      "address": {
+        "city": "Phoenix",
+        "state": "AZ",
+        "country": "USA",
+        "zipCode": "85001"
+      },
+      "enrolledCourses": [
+        9
+      ],
+      "createdAt": "2025-10-18T14:45:00Z",
+      "updatedAt": "2025-12-14T10:30:00Z",
+      "status": "Active",
+      "profileImage": "https://i.pravatar.cc/150?img=20",
+      "bio": "Computer science student exploring blockchain and decentralized technologies.",
+      "educationLevel": "Bachelor's Degree",
+      "interests": [
+        "Blockchain",
+        "Web3",
+        "Programming"
+      ],
+      "totalCoursesCompleted": 1,
+      "averageGrade": 95
+    }
+  ],
+  "enrollments": [
+    {
+      "id": 1,
+      "courseId": 1,
+      "studentId": 1,
+      "enrollmentDate": "2025-11-05T10:00:00Z",
+      "status": "In Progress",
+      "progress": 65,
+      "lastAccessedDate": "2025-12-22T08:30:00Z",
+      "totalHoursSpent": 26,
+      "completedModules": 13,
+      "totalModules": 20,
+      "rating": 5
+    },
+    {
+      "id": 2,
+      "courseId": 3,
+      "studentId": 1,
+      "enrollmentDate": "2025-11-10T14:20:00Z",
+      "status": "In Progress",
+      "progress": 40,
+      "lastAccessedDate": "2025-12-20T16:45:00Z",
+      "totalHoursSpent": 12,
+      "completedModules": 8,
+      "totalModules": 15,
+      "rating": 4
+    },
+    {
+      "id": 3,
+      "courseId": 10,
+      "studentId": 1,
+      "enrollmentDate": "2025-12-01T09:15:00Z",
+      "completionDate": "2025-12-18T17:30:00Z",
+      "status": "Completed",
+      "progress": 100,
+      "grade": 92,
+      "certificateIssued": true,
+      "lastAccessedDate": "2025-12-18T17:30:00Z",
+      "totalHoursSpent": 25,
+      "completedModules": 12,
+      "totalModules": 12,
+      "feedback": "Excellent course! Very comprehensive and well-structured.",
+      "rating": 5
+    },
+    {
+      "id": 4,
+      "courseId": 2,
+      "studentId": 2,
+      "enrollmentDate": "2025-10-15T11:00:00Z",
+      "completionDate": "2025-12-10T14:00:00Z",
+      "status": "Completed",
+      "progress": 100,
+      "grade": 95,
+      "certificateIssued": true,
+      "lastAccessedDate": "2025-12-10T14:00:00Z",
+      "totalHoursSpent": 50,
+      "completedModules": 25,
+      "totalModules": 25,
+      "feedback": "Best data science course I've taken!",
+      "rating": 5
+    },
+    {
+      "id": 5,
+      "courseId": 5,
+      "studentId": 2,
+      "enrollmentDate": "2025-11-20T13:30:00Z",
+      "status": "In Progress",
+      "progress": 55,
+      "lastAccessedDate": "2025-12-23T10:15:00Z",
+      "totalHoursSpent": 25,
+      "completedModules": 12,
+      "totalModules": 22,
+      "rating": 5
+    },
+    {
+      "id": 6,
+      "courseId": 6,
+      "studentId": 2,
+      "enrollmentDate": "2025-12-05T08:45:00Z",
+      "status": "Enrolled",
+      "progress": 15,
+      "lastAccessedDate": "2025-12-21T12:00:00Z",
+      "totalHoursSpent": 6,
+      "completedModules": 3,
+      "totalModules": 19
+    },
+    {
+      "id": 7,
+      "courseId": 4,
+      "studentId": 3,
+      "enrollmentDate": "2025-11-08T15:00:00Z",
+      "status": "In Progress",
+      "progress": 70,
+      "lastAccessedDate": "2025-12-22T14:30:00Z",
+      "totalHoursSpent": 24,
+      "completedModules": 14,
+      "totalModules": 18,
+      "rating": 4
+    },
+    {
+      "id": 8,
+      "courseId": 7,
+      "studentId": 3,
+      "enrollmentDate": "2025-11-25T10:30:00Z",
+      "status": "In Progress",
+      "progress": 45,
+      "lastAccessedDate": "2025-12-20T09:20:00Z",
+      "totalHoursSpent": 13,
+      "completedModules": 9,
+      "totalModules": 14,
+      "rating": 5
+    },
+    {
+      "id": 9,
+      "courseId": 1,
+      "studentId": 4,
+      "enrollmentDate": "2025-10-20T12:15:00Z",
+      "completionDate": "2025-12-15T16:45:00Z",
+      "status": "Completed",
+      "progress": 100,
+      "grade": 88,
+      "certificateIssued": true,
+      "lastAccessedDate": "2025-12-15T16:45:00Z",
+      "totalHoursSpent": 40,
+      "completedModules": 20,
+      "totalModules": 20,
+      "feedback": "Great course with practical examples.",
+      "rating": 4
+    },
+    {
+      "id": 10,
+      "courseId": 8,
+      "studentId": 4,
+      "enrollmentDate": "2025-11-15T09:00:00Z",
+      "status": "In Progress",
+      "progress": 60,
+      "lastAccessedDate": "2025-12-23T11:30:00Z",
+      "totalHoursSpent": 19,
+      "completedModules": 12,
+      "totalModules": 16,
+      "rating": 4
+    },
+    {
+      "id": 11,
+      "courseId": 9,
+      "studentId": 4,
+      "enrollmentDate": "2025-12-01T14:00:00Z",
+      "status": "Enrolled",
+      "progress": 25,
+      "lastAccessedDate": "2025-12-22T15:00:00Z",
+      "totalHoursSpent": 10,
+      "completedModules": 5,
+      "totalModules": 21
+    },
+    {
+      "id": 12,
+      "courseId": 2,
+      "studentId": 5,
+      "enrollmentDate": "2025-11-01T10:45:00Z",
+      "status": "In Progress",
+      "progress": 75,
+      "lastAccessedDate": "2025-12-23T09:45:00Z",
+      "totalHoursSpent": 37,
+      "completedModules": 19,
+      "totalModules": 25,
+      "rating": 5
+    },
+    {
+      "id": 13,
+      "courseId": 10,
+      "studentId": 5,
+      "enrollmentDate": "2025-12-10T11:30:00Z",
+      "status": "In Progress",
+      "progress": 35,
+      "lastAccessedDate": "2025-12-21T13:15:00Z",
+      "totalHoursSpent": 9,
+      "completedModules": 4,
+      "totalModules": 12,
+      "rating": 4
+    },
+    {
+      "id": 14,
+      "courseId": 3,
+      "studentId": 6,
+      "enrollmentDate": "2025-10-25T08:30:00Z",
+      "completionDate": "2025-12-05T15:20:00Z",
+      "status": "Completed",
+      "progress": 100,
+      "grade": 91,
+      "certificateIssued": true,
+      "lastAccessedDate": "2025-12-05T15:20:00Z",
+      "totalHoursSpent": 30,
+      "completedModules": 15,
+      "totalModules": 15,
+      "feedback": "Excellent preparation for AWS certification!",
+      "rating": 5
+    },
+    {
+      "id": 15,
+      "courseId": 6,
+      "studentId": 6,
+      "enrollmentDate": "2025-12-08T13:00:00Z",
+      "status": "In Progress",
+      "progress": 30,
+      "lastAccessedDate": "2025-12-22T10:30:00Z",
+      "totalHoursSpent": 11,
+      "completedModules": 6,
+      "totalModules": 19,
+      "rating": 5
+    },
+    {
+      "id": 16,
+      "courseId": 5,
+      "studentId": 7,
+      "enrollmentDate": "2025-11-12T09:15:00Z",
+      "status": "In Progress",
+      "progress": 80,
+      "lastAccessedDate": "2025-12-23T12:45:00Z",
+      "totalHoursSpent": 36,
+      "completedModules": 18,
+      "totalModules": 22,
+      "rating": 5
+    },
+    {
+      "id": 17,
+      "courseId": 7,
+      "studentId": 8,
+      "enrollmentDate": "2025-11-18T14:30:00Z",
+      "status": "In Progress",
+      "progress": 50,
+      "lastAccessedDate": "2025-12-20T11:00:00Z",
+      "totalHoursSpent": 14,
+      "completedModules": 7,
+      "totalModules": 14,
+      "rating": 4
+    },
+    {
+      "id": 18,
+      "courseId": 10,
+      "studentId": 8,
+      "enrollmentDate": "2025-12-02T10:00:00Z",
+      "status": "In Progress",
+      "progress": 40,
+      "lastAccessedDate": "2025-12-22T08:30:00Z",
+      "totalHoursSpent": 10,
+      "completedModules": 5,
+      "totalModules": 12,
+      "rating": 5
+    },
+    {
+      "id": 19,
+      "courseId": 1,
+      "studentId": 9,
+      "enrollmentDate": "2025-10-30T11:45:00Z",
+      "status": "In Progress",
+      "progress": 85,
+      "lastAccessedDate": "2025-12-23T13:20:00Z",
+      "totalHoursSpent": 34,
+      "completedModules": 17,
+      "totalModules": 20,
+      "rating": 5
+    },
+    {
+      "id": 20,
+      "courseId": 4,
+      "studentId": 9,
+      "enrollmentDate": "2025-11-22T15:15:00Z",
+      "status": "In Progress",
+      "progress": 55,
+      "lastAccessedDate": "2025-12-21T14:45:00Z",
+      "totalHoursSpent": 19,
+      "completedModules": 10,
+      "totalModules": 18,
+      "rating": 4
+    },
+    {
+      "id": 21,
+      "courseId": 8,
+      "studentId": 9,
+      "enrollmentDate": "2025-12-12T09:30:00Z",
+      "status": "Enrolled",
+      "progress": 20,
+      "lastAccessedDate": "2025-12-20T10:15:00Z",
+      "totalHoursSpent": 6,
+      "completedModules": 3,
+      "totalModules": 16
+    },
+    {
+      "id": 22,
+      "courseId": 9,
+      "studentId": 10,
+      "enrollmentDate": "2025-11-28T12:00:00Z",
+      "status": "In Progress",
+      "progress": 45,
+      "lastAccessedDate": "2025-12-23T11:00:00Z",
+      "totalHoursSpent": 19,
+      "completedModules": 9,
+      "totalModules": 21,
+      "rating": 5
+    }
+  ],
+  "feedback": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john.doe@email.com",
+      "subject": "Great Platform!",
+      "message": "I really enjoy using this platform. The courses are well-structured and the instructors are knowledgeable.",
+      "category": "General",
+      "priority": "Low",
+      "status": "Resolved",
+      "createdAt": "2025-12-10T14:30:00Z",
+      "resolvedAt": "2025-12-12T09:15:00Z",
+      "response": "Thank you for your positive feedback! We're glad you're enjoying the platform.",
+      "userId": 1
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "email": "jane.smith@email.com",
+      "subject": "Video playback issue",
+      "message": "I'm experiencing buffering issues when watching course videos. Can you please look into this?",
+      "category": "Technical Issue",
+      "priority": "High",
+      "status": "In Review",
+      "createdAt": "2025-12-18T11:20:00Z",
+      "userId": 2
+    },
+    {
+      "id": 3,
+      "name": "Mike Johnson",
+      "email": "mike.johnson@email.com",
+      "subject": "Course suggestion",
+      "message": "Would love to see more courses on Flutter development and cross-platform mobile apps.",
+      "category": "Feature Request",
+      "priority": "Medium",
+      "status": "New",
+      "createdAt": "2025-12-20T16:45:00Z",
+      "userId": 3
+    },
+    {
+      "id": 4,
+      "name": "Emily Davis",
+      "email": "emily.davis@email.com",
+      "subject": "Certificate download",
+      "message": "I completed a course but cannot download my certificate. Please assist.",
+      "category": "Technical Issue",
+      "priority": "High",
+      "status": "Resolved",
+      "createdAt": "2025-12-15T10:00:00Z",
+      "resolvedAt": "2025-12-16T14:30:00Z",
+      "response": "The issue has been fixed. You can now download your certificate from your profile.",
+      "userId": 4
+    },
+    {
+      "id": 5,
+      "name": "Anonymous User",
+      "email": "contact@example.com",
+      "subject": "Payment inquiry",
+      "message": "Can I get a refund for a course I purchased last week but haven't started yet?",
+      "category": "Billing",
+      "priority": "Medium",
+      "status": "In Review",
+      "createdAt": "2025-12-22T09:30:00Z"
+    }
+  ]
+}

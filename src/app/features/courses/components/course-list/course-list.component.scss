@@ -1,0 +1,198 @@
+.course-list-container {
+  padding: 24px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.header-card {
+  margin-bottom: 24px;
+
+  mat-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    color: #3f51b5;
+
+    mat-icon {
+      font-size: 32px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.filters-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-top: 16px;
+
+  mat-form-field {
+    min-width: 200px;
+
+    &.search-field {
+      flex: 1;
+      min-width: 300px;
+    }
+  }
+
+  button {
+    height: 56px;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 16px;
+
+  p {
+    color: #666;
+    font-size: 16px;
+  }
+}
+
+.table-card {
+  overflow: hidden;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.courses-table {
+  width: 100%;
+  background-color: white;
+
+  .mat-mdc-header-cell {
+    font-weight: 600;
+    color: #3f51b5;
+    background-color: #f8f9fa;
+  }
+
+  .course-title {
+    strong {
+      color: #333;
+      font-size: 14px;
+    }
+
+    .instructor {
+      color: #666;
+      font-size: 12px;
+    }
+  }
+
+  .price {
+    font-weight: 600;
+    color: #4caf50;
+    font-size: 14px;
+  }
+
+  .enrollment-badge {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 12px;
+  }
+}
+
+.course-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.no-data {
+  text-align: center;
+  padding: 48px !important;
+  color: #666;
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: #999;
+  }
+
+  p {
+    margin-top: 16px;
+    font-size: 16px;
+  }
+}
+
+/* Chip Styles */
+mat-chip {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.level-beginner {
+  background-color: #e8f5e9 !important;
+  color: #2e7d32 !important;
+}
+
+.level-intermediate {
+  background-color: #fff3e0 !important;
+  color: #ef6c00 !important;
+}
+
+.level-advanced {
+  background-color: #fce4ec !important;
+  color: #c2185b !important;
+}
+
+.level-expert {
+  background-color: #f3e5f5 !important;
+  color: #7b1fa2 !important;
+}
+
+.status-active {
+  background-color: #e8f5e9 !important;
+  color: #2e7d32 !important;
+}
+
+.status-inactive {
+  background-color: #ffebee !important;
+  color: #c62828 !important;
+}
+
+.popularity-high {
+  color: #4caf50;
+  font-weight: 600;
+}
+
+.popularity-medium {
+  color: #ff9800;
+  font-weight: 600;
+}
+
+.popularity-low {
+  color: #f44336;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filters-section {
+    flex-direction: column;
+
+    mat-form-field,
+    button {
+      width: 100%;
+    }
+  }
+
+  .courses-table {
+    font-size: 12px;
+  }
+}

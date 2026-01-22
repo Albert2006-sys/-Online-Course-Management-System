@@ -1,0 +1,346 @@
+.feedback-container {
+  padding: 24px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 32px;
+
+  h1 {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 0 8px 0;
+    color: #3f51b5;
+    font-size: 32px;
+
+    mat-icon {
+      font-size: 40px;
+      width: 40px;
+      height: 40px;
+    }
+  }
+
+  .subtitle {
+    margin: 0;
+    color: #666;
+    font-size: 16px;
+    max-width: 600px;
+  }
+}
+
+.info-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 32px;
+
+  .info-card {
+    padding: 24px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    mat-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+      color: #3f51b5;
+      margin-bottom: 12px;
+    }
+
+    h3 {
+      margin: 0 0 8px 0;
+      color: #333;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+  }
+}
+
+.form-card {
+  max-width: 800px;
+  margin: 0 auto 24px;
+  padding: 24px;
+
+  mat-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #3f51b5;
+    font-size: 24px;
+
+    mat-icon {
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+    }
+  }
+}
+
+.form-section {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e0e0e0;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+
+  h3 {
+    color: #3f51b5;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+
+.form-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+
+  mat-form-field {
+    flex: 1;
+
+    &.full-width {
+      width: 100%;
+    }
+  }
+}
+
+.form-summary {
+  background-color: #f8f9fa;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 24px;
+
+  .summary-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: #3f51b5;
+    font-weight: 600;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .summary-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    .summary-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 16px;
+      background-color: white;
+      font-size: 13px;
+
+      mat-icon {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+      }
+
+      &.valid {
+        color: #4caf50;
+        border: 1px solid #c8e6c9;
+
+        mat-icon {
+          color: #4caf50;
+        }
+      }
+
+      &.invalid {
+        color: #f44336;
+        border: 1px solid #ffcdd2;
+
+        mat-icon {
+          color: #f44336;
+        }
+      }
+    }
+  }
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e0e0e0;
+
+  button {
+    min-width: 150px;
+
+    mat-spinner {
+      display: inline-block;
+      margin-right: 8px;
+    }
+  }
+}
+
+.contact-card {
+  max-width: 800px;
+  margin: 0 auto;
+
+  mat-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #3f51b5;
+
+    mat-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-top: 16px;
+
+    .contact-method {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+
+      mat-icon {
+        color: #3f51b5;
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+      }
+
+      h4 {
+        margin: 0 0 4px 0;
+        color: #333;
+        font-size: 16px;
+      }
+
+      p {
+        margin: 0;
+        color: #666;
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+/* Material Form Field Customization */
+::ng-deep .mat-mdc-form-field {
+  font-size: 14px;
+
+  .mat-mdc-text-field-wrapper {
+    background-color: white;
+  }
+}
+
+/* Material Select with Icons */
+::ng-deep .mat-mdc-option {
+  mat-icon {
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+}
+
+/* Error Messages */
+mat-error {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+/* Hint Messages */
+mat-hint {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Disabled State */
+button[disabled] {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .feedback-container {
+    padding: 16px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 16px;
+
+    h1 {
+      font-size: 24px;
+
+      mat-icon {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .info-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+
+    mat-form-field {
+      width: 100%;
+    }
+  }
+
+  .form-summary .summary-items {
+    flex-direction: column;
+  }
+
+  .form-actions {
+    flex-direction: column;
+
+    button {
+      width: 100%;
+    }
+  }
+
+  .contact-methods {
+    grid-template-columns: 1fr !important;
+  }
+}

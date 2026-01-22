@@ -1,0 +1,198 @@
+<div class="enrollment-form-container">
+  <!-- Header -->
+  <div class="header">
+    <h2>
+      <mat-icon>add_circle</mat-icon>
+      New Enrollment
+    </h2>
+    <button mat-button (click)="onCancel()">
+      <mat-icon>arrow_back</mat-icon>
+      Back
+    </button>
+  </div>
+
+  <!-- Loading Spinner -->
+  <div *ngIf="isLoadingData" class="loading-container">
+    <mat-spinner></mat-spinner>
+    <p>Loading data...</p>
+  </div>
+
+  <!-- Form Card -->
+  <mat-card *ngIf="!isLoadingData" class="form-card">
+    <mat-card-content>
+      <form [formGroup]="enrollmentForm" (ngSubmit)="onSubmit()">
+        
+        <!-- Student Selection -->
+        <div class="form-section">
+          <h3>
+            <mat-icon>person</mat-icon>
+            Select Student
+          </h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Student</mat-label>
+            <mat-select formControlName="studentId">
+              <mat-option *ngFor="let student of students" [value]="student.id">
+                {{ getStudentDisplay(student) }}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>people</mat-icon>
+            <mat-error *ngIf="isFieldInvalid('studentId')">
+              {{ getErrorMessage('studentId') }}
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Selected Student Info -->
+          <div *ngIf="selectedStudent" class="info-card student-info">
+            <div class="info-header">
+              <mat-icon>account_circle</mat-icon>
+              <span>Student Details</span>
+            </div>
+            <div class="info-content">
+              <div class="info-item">
+                <label>Name:</label>
+                <span>{{ selectedStudent.name }}</span>
+              </div>
+              <div class="info-item">
+                <label>Email:</label>
+                <span>{{ selectedStudent.email }}</span>
+              </div>
+              <div class="info-item">
+                <label>Status:</label>
+                <span class="status-badge">{{ selectedStudent.status }}</span>
+              </div>
+              <div class="info-item">
+                <label>Enrolled Courses:</label>
+                <span>{{ selectedStudent.enrolledCourses.length }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Course Selection -->
+        <div class="form-section">
+          <h3>
+            <mat-icon>school</mat-icon>
+            Select Course
+          </h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Course</mat-label>
+            <mat-select formControlName="courseId">
+              <mat-option *ngFor="let course of courses" [value]="course.id">
+                {{ getCourseDisplay(course) }}
+              </mat-option>
+            </mat-select>
+            <mat-icon matSuffix>class</mat-icon>
+            <mat-error *ngIf="isFieldInvalid('courseId')">
+              {{ getErrorMessage('courseId') }}
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Selected Course Info -->
+          <div *ngIf="selectedCourse" class="info-card course-info">
+            <div class="info-header">
+              <mat-icon>info</mat-icon>
+              <span>Course Details</span>
+            </div>
+            <div class="info-content">
+              <div class="info-item">
+                <label>Title:</label>
+                <span>{{ selectedCourse.title }}</span>
+              </div>
+              <div class="info-item">
+                <label>Category:</label>
+                <span>{{ selectedCourse.category }}</span>
+              </div>
+              <div class="info-item">
+                <label>Level:</label>
+                <span>{{ selectedCourse.level }}</span>
+              </div>
+              <div class="info-item">
+                <label>Duration:</label>
+                <span>{{ selectedCourse.duration }} hours</span>
+              </div>
+              <div class="info-item">
+                <label>Price:</label>
+                <span>${{ selectedCourse.price }}</span>
+              </div>
+              <div class="info-item">
+                <label>Instructor:</label>
+                <span>{{ selectedCourse.instructor }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Enrollment Date -->
+        <div class="form-section">
+          <h3>
+            <mat-icon>event</mat-icon>
+            Enrollment Date
+          </h3>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Enrollment Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="enrollmentDate" [max]="maxDate">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="isFieldInvalid('enrollmentDate')">
+              {{ getErrorMessage('enrollmentDate') }}
+            </mat-error>
+            <mat-hint>Select the date when the student will be enrolled</mat-hint>
+          </mat-form-field>
+        </div>
+
+        <!-- Summary Section -->
+        <div class="summary-section" *ngIf="selectedCourse && selectedStudent">
+          <mat-card class="summary-card">
+            <mat-card-header>
+              <mat-card-title>
+                <mat-icon>summarize</mat-icon>
+                Enrollment Summary
+              </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p class="summary-text">{{ getEnrollmentSummary() }}</p>
+              <div class="summary-details">
+                <div class="detail">
+                  <mat-icon>person</mat-icon>
+                  <span>{{ selectedStudent.name }}</span>
+                </div>
+                <mat-icon class="arrow">arrow_forward</mat-icon>
+                <div class="detail">
+                  <mat-icon>school</mat-icon>
+                  <span>{{ selectedCourse.title }}</span>
+                </div>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+
+        <!-- Duplicate Enrollment Warning -->
+        <div *ngIf="enrollmentForm.hasError('duplicate')" class="error-message">
+          <mat-icon>warning</mat-icon>
+          <span>This student is already enrolled in this course!</span>
+        </div>
+
+        <!-- Form Actions -->
+        <div class="form-actions">
+          <button mat-raised-button type="button" (click)="onCancel()">
+            <mat-icon>cancel</mat-icon>
+            Cancel
+          </button>
+          <button 
+            mat-raised-button 
+            color="primary" 
+            type="submit" 
+            [disabled]="enrollmentForm.invalid || isLoading"
+          >
+            <mat-spinner *ngIf="isLoading" diameter="20"></mat-spinner>
+            <mat-icon *ngIf="!isLoading">add</mat-icon>
+            {{ isLoading ? 'Creating...' : 'Create Enrollment' }}
+          </button>
+        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

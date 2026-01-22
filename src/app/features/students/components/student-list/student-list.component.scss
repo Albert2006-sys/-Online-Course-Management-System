@@ -1,0 +1,207 @@
+.student-list-container {
+  padding: 24px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.header-card {
+  margin-bottom: 24px;
+
+  mat-card-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 24px;
+    color: #3f51b5;
+
+    mat-icon {
+      font-size: 32px;
+      width: 32px;
+      height: 32px;
+    }
+  }
+}
+
+.filters-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+  margin-top: 16px;
+
+  mat-form-field {
+    min-width: 200px;
+
+    &.search-field {
+      flex: 1;
+      min-width: 300px;
+    }
+  }
+
+  button {
+    height: 56px;
+  }
+}
+
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  gap: 16px;
+
+  p {
+    color: #666;
+    font-size: 16px;
+  }
+}
+
+.table-card {
+  overflow: hidden;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+.students-table {
+  width: 100%;
+  background-color: white;
+
+  .mat-mdc-header-cell {
+    font-weight: 600;
+    color: #3f51b5;
+    background-color: #f8f9fa;
+  }
+
+  .student-name {
+    .name-with-avatar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .avatar-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 36px;
+        color: #999;
+      }
+
+      span {
+        font-weight: 500;
+        color: #333;
+      }
+    }
+  }
+
+  .email-link {
+    color: #1976d2;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .enrollment-badge {
+    background-color: #e3f2fd;
+    color: #1976d2;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-weight: 500;
+    font-size: 12px;
+  }
+}
+
+.student-row {
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+}
+
+.no-data {
+  text-align: center;
+  padding: 48px !important;
+  color: #666;
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    color: #999;
+  }
+
+  p {
+    margin-top: 16px;
+    font-size: 16px;
+  }
+}
+
+/* Status Chips */
+.status-active {
+  background-color: #e8f5e9 !important;
+  color: #2e7d32 !important;
+}
+
+.status-inactive {
+  background-color: #ffebee !important;
+  color: #c62828 !important;
+}
+
+.status-suspended {
+  background-color: #fff3e0 !important;
+  color: #ef6c00 !important;
+}
+
+.status-graduated {
+  background-color: #e3f2fd !important;
+  color: #1976d2 !important;
+}
+
+/* Grade Colors */
+.grade-excellent {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.grade-good {
+  color: #1976d2;
+  font-weight: 600;
+}
+
+.grade-fair {
+  color: #ef6c00;
+  font-weight: 600;
+}
+
+.grade-poor {
+  color: #c62828;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filters-section {
+    flex-direction: column;
+
+    mat-form-field,
+    button {
+      width: 100%;
+    }
+  }
+
+  .students-table {
+    font-size: 12px;
+  }
+}
