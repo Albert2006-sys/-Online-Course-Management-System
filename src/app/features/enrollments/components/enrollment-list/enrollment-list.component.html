@@ -8,20 +8,20 @@
       </mat-card-title>
     </mat-card-header>
     <mat-card-content>
-      <!-- Filters -->
-      <div class="filters-section">
+      <!-- Filters: Row 1 — search + dropdowns -->
+      <div class="filters-row">
         <mat-form-field appearance="outline" class="search-field">
           <mat-label>Search</mat-label>
-          <input 
-            matInput 
-            [(ngModel)]="searchTerm" 
+          <input
+            matInput
+            [(ngModel)]="searchTerm"
             (keyup)="applySearch()"
             placeholder="Search by student or course..."
           >
           <mat-icon matSuffix>search</mat-icon>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="filter-field">
           <mat-label>Student</mat-label>
           <mat-select [(ngModel)]="selectedStudent" (selectionChange)="applyFilters()">
             <mat-option value="">All Students</mat-option>
@@ -31,7 +31,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="filter-field">
           <mat-label>Course</mat-label>
           <mat-select [(ngModel)]="selectedCourse" (selectionChange)="applyFilters()">
             <mat-option value="">All Courses</mat-option>
@@ -41,7 +41,7 @@
           </mat-select>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="filter-field">
           <mat-label>Status</mat-label>
           <mat-select [(ngModel)]="selectedStatus" (selectionChange)="applyFilters()">
             <mat-option value="">All Status</mat-option>
@@ -50,35 +50,38 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
+      </div>
 
-        <mat-form-field appearance="outline">
+      <!-- Filters: Row 2 — date pickers + action buttons -->
+      <div class="filters-row filters-actions-row">
+        <mat-form-field appearance="outline" class="date-field">
           <mat-label>Start Date</mat-label>
           <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" (dateChange)="applyFilters()">
           <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
           <mat-datepicker #startPicker></mat-datepicker>
         </mat-form-field>
 
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="date-field">
           <mat-label>End Date</mat-label>
           <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" (dateChange)="applyFilters()">
           <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
           <mat-datepicker #endPicker></mat-datepicker>
         </mat-form-field>
 
-        <button mat-raised-button color="accent" (click)="clearFilters()">
-          <mat-icon>clear</mat-icon>
-          Clear Filters
-        </button>
-
-        <button mat-stroked-button color="primary" (click)="openQuickEnrollment()">
-          <mat-icon>flash_on</mat-icon>
-          Quick Enroll
-        </button>
-
-        <button mat-raised-button color="primary" routerLink="/enrollments/new">
-          <mat-icon>add</mat-icon>
-          Full Form
-        </button>
+        <div class="actions-group">
+          <button mat-stroked-button (click)="clearFilters()" class="btn-clear">
+            <mat-icon>clear</mat-icon>
+            Clear
+          </button>
+          <button mat-stroked-button color="primary" (click)="openQuickEnrollment()">
+            <mat-icon>flash_on</mat-icon>
+            Quick Enroll
+          </button>
+          <button mat-raised-button color="primary" routerLink="/enrollments/new">
+            <mat-icon>add</mat-icon>
+            New Enrollment
+          </button>
+        </div>
       </div>
     </mat-card-content>
   </mat-card>

@@ -1,23 +1,47 @@
+@import '../../../../../styles/variables';
+@import '../../../../../styles/mixins';
+
 .student-list-container {
-  padding: 24px;
-  background-color: #f5f5f5;
+  padding: 28px;
+  background: transparent;
   min-height: 100vh;
+  animation: fadeSlideUp 0.4s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .header-card {
+  @include glass-card;
+  @include top-accent($grad-success);
   margin-bottom: 24px;
 
   mat-card-title {
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 24px;
-    color: #3f51b5;
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.4px;
+    background: linear-gradient(135deg, #f0f4ff, #4facfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 
     mat-icon {
-      font-size: 32px;
-      width: 32px;
-      height: 32px;
+      font-size: 28px;
+      width: 28px;
+      height: 28px;
+      -webkit-text-fill-color: $color-blue;
     }
   }
 }
@@ -25,7 +49,7 @@
 .filters-section {
   display: flex;
   flex-wrap: wrap;
-  gap: 16px;
+  gap: 14px;
   align-items: center;
   margin-top: 16px;
 
@@ -34,7 +58,7 @@
 
     &.search-field {
       flex: 1;
-      min-width: 300px;
+      min-width: 280px;
     }
   }
 
@@ -48,16 +72,30 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 48px;
+  padding: 56px;
   gap: 16px;
 
   p {
-    color: #666;
-    font-size: 16px;
+    color: $text-secondary;
+    font-size: 15px;
+    animation: pulse 1.5s infinite;
+  }
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.5;
   }
 }
 
 .table-card {
+  @include glass-card;
   overflow: hidden;
 }
 
@@ -67,13 +105,7 @@
 
 .students-table {
   width: 100%;
-  background-color: white;
-
-  .mat-mdc-header-cell {
-    font-weight: 600;
-    color: #3f51b5;
-    background-color: #f8f9fa;
-  }
+  background: transparent;
 
   .student-name {
     .name-with-avatar {
@@ -86,25 +118,27 @@
         height: 36px;
         border-radius: 50%;
         object-fit: cover;
+        border: 2px solid rgba(79, 172, 254, 0.3);
       }
 
       .avatar-icon {
         width: 36px;
         height: 36px;
         font-size: 36px;
-        color: #999;
+        color: $text-muted;
       }
 
       span {
-        font-weight: 500;
-        color: #333;
+        font-weight: 600;
+        color: $text-primary;
       }
     }
   }
 
   .email-link {
-    color: #1976d2;
+    color: $color-blue;
     text-decoration: none;
+    font-size: 13px;
 
     &:hover {
       text-decoration: underline;
@@ -112,86 +146,103 @@
   }
 
   .enrollment-badge {
-    background-color: #e3f2fd;
-    color: #1976d2;
+    display: inline-flex;
+    align-items: center;
     padding: 4px 12px;
-    border-radius: 12px;
-    font-weight: 500;
+    background: rgba(79, 172, 254, 0.12);
+    color: $color-blue;
+    border: 1px solid rgba(79, 172, 254, 0.25);
+    border-radius: $radius-pill;
+    font-weight: 700;
     font-size: 12px;
   }
 }
 
 .student-row {
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background 0.15s ease;
 
   &:hover {
-    background-color: #f5f5f5;
+    background: rgba(79, 172, 254, 0.06) !important;
   }
 }
 
 .no-data {
   text-align: center;
-  padding: 48px !important;
-  color: #666;
+  padding: 56px 24px !important;
+  color: $text-secondary;
 
   mat-icon {
-    font-size: 48px;
-    width: 48px;
-    height: 48px;
-    color: #999;
+    font-size: 56px;
+    width: 56px;
+    height: 56px;
+    color: $text-muted;
+    display: block;
+    margin: 0 auto 16px;
+    opacity: 0.4;
   }
 
   p {
-    margin-top: 16px;
-    font-size: 16px;
+    font-size: 15px;
+    margin: 0;
   }
 }
 
-/* Status Chips */
+mat-chip {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  border-radius: 999px !important;
+}
+
 .status-active {
-  background-color: #e8f5e9 !important;
-  color: #2e7d32 !important;
+  background: rgba(67, 233, 123, 0.12) !important;
+  color: #43e97b !important;
+  border: 1px solid rgba(67, 233, 123, 0.25) !important;
 }
 
 .status-inactive {
-  background-color: #ffebee !important;
-  color: #c62828 !important;
+  background: rgba(255, 77, 109, 0.12) !important;
+  color: #ff4d6d !important;
+  border: 1px solid rgba(255, 77, 109, 0.25) !important;
 }
 
 .status-suspended {
-  background-color: #fff3e0 !important;
-  color: #ef6c00 !important;
+  background: rgba(255, 210, 0, 0.12) !important;
+  color: #ffd200 !important;
+  border: 1px solid rgba(255, 210, 0, 0.25) !important;
 }
 
 .status-graduated {
-  background-color: #e3f2fd !important;
-  color: #1976d2 !important;
+  background: rgba(102, 126, 234, 0.14) !important;
+  color: #a78bfa !important;
+  border: 1px solid rgba(102, 126, 234, 0.25) !important;
 }
 
-/* Grade Colors */
 .grade-excellent {
-  color: #2e7d32;
-  font-weight: 600;
+  color: $color-green;
+  font-weight: 700;
 }
 
 .grade-good {
-  color: #1976d2;
-  font-weight: 600;
+  color: $color-blue;
+  font-weight: 700;
 }
 
 .grade-fair {
-  color: #ef6c00;
-  font-weight: 600;
+  color: $color-amber;
+  font-weight: 700;
 }
 
 .grade-poor {
-  color: #c62828;
-  font-weight: 600;
+  color: $color-red;
+  font-weight: 700;
 }
 
-/* Responsive */
 @media (max-width: 768px) {
+  .student-list-container {
+    padding: 16px;
+  }
+
   .filters-section {
     flex-direction: column;
 

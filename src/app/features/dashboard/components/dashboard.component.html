@@ -22,32 +22,34 @@
     </mat-card-title>
     <mat-card-content>
       <div class="nav-hub-grid">
-        <button mat-stroked-button color="primary" routerLink="/courses">
+        <button mat-stroked-button class="nav-browse" routerLink="/courses">
           <mat-icon>school</mat-icon>
-          <span>Manage Courses</span>
+          <span>Courses</span>
         </button>
-        <button mat-stroked-button color="primary" routerLink="/students">
+        <button mat-stroked-button class="nav-browse" routerLink="/students">
           <mat-icon>people</mat-icon>
-          <span>Manage Students</span>
+          <span>Students</span>
         </button>
-        <button mat-stroked-button color="primary" routerLink="/enrollments">
+        <button mat-stroked-button class="nav-browse" routerLink="/enrollments">
           <mat-icon>assignment</mat-icon>
-          <span>View Enrollments</span>
+          <span>Enrollments</span>
         </button>
-        <button mat-stroked-button color="primary" routerLink="/feedback">
+        <button mat-stroked-button class="nav-browse" routerLink="/feedback">
           <mat-icon>feedback</mat-icon>
-          <span>View Feedback</span>
+          <span>Feedback</span>
         </button>
 
-        <button mat-raised-button color="accent" routerLink="/courses/new">
+        <div class="nav-divider"></div>
+
+        <button mat-stroked-button class="nav-create" routerLink="/courses/new">
           <mat-icon>add</mat-icon>
           <span>New Course</span>
         </button>
-        <button mat-raised-button color="accent" routerLink="/students/new">
+        <button mat-stroked-button class="nav-create" routerLink="/students/new">
           <mat-icon>person_add</mat-icon>
           <span>New Student</span>
         </button>
-        <button mat-raised-button color="accent" routerLink="/enrollments/new">
+        <button mat-stroked-button class="nav-create" routerLink="/enrollments/new">
           <mat-icon>playlist_add</mat-icon>
           <span>New Enrollment</span>
         </button>
@@ -63,11 +65,12 @@
 
   <!-- Dashboard Content -->
   <div *ngIf="!isLoading && dashboardStats" class="dashboard-content">
-    
+
     <!-- Statistics Cards -->
     <div class="stats-grid">
       <!-- Total Courses -->
-      <mat-card class="stat-card courses-card clickable" (click)="openDetail('courses', 'All Courses')" matTooltip="View Course List">
+      <mat-card class="stat-card courses-card clickable" (click)="openDetail('courses', 'All Courses')"
+        matTooltip="View Course List">
         <div class="stat-icon-container">
           <mat-icon>school</mat-icon>
         </div>
@@ -85,8 +88,9 @@
       </mat-card>
 
       <!-- Total Students -->
-      <mat-card class="stat-card students-card clickable" (click)="openDetail('students', 'Registered Students')" matTooltip="View Student List">
-         <div class="stat-icon-container">
+      <mat-card class="stat-card students-card clickable" (click)="openDetail('students', 'Registered Students')"
+        matTooltip="View Student List">
+        <div class="stat-icon-container">
           <mat-icon>people</mat-icon>
         </div>
         <div class="stat-content">
@@ -103,8 +107,9 @@
       </mat-card>
 
       <!-- Total Enrollments -->
-      <mat-card class="stat-card enrollments-card clickable" (click)="openDetail('enrollments', 'Enrollment History')" matTooltip="View Enrollments">
-         <div class="stat-icon-container">
+      <mat-card class="stat-card enrollments-card clickable" (click)="openDetail('enrollments', 'Enrollment History')"
+        matTooltip="View Enrollments">
+        <div class="stat-icon-container">
           <mat-icon>assignment</mat-icon>
         </div>
         <div class="stat-content">
@@ -121,15 +126,16 @@
       </mat-card>
 
       <!-- Total Revenue -->
-      <mat-card class="stat-card revenue-card clickable" (click)="openDetail('revenue', 'Revenue Analysis')" matTooltip="View Revenue Details">
-         <div class="stat-icon-container">
+      <mat-card class="stat-card revenue-card clickable" (click)="openDetail('revenue', 'Revenue Analysis')"
+        matTooltip="View Revenue Details">
+        <div class="stat-icon-container">
           <mat-icon>attach_money</mat-icon>
         </div>
         <div class="stat-content">
           <p class="stat-label">Total Revenue</p>
           <h2 class="stat-value">{{ formatCurrency(dashboardStats.totalRevenue) }}</h2>
         </div>
-         <div class="stat-footer">
+        <div class="stat-footer">
           <span class="trend" [ngClass]="statTrends.revenue.direction">
             <mat-icon>{{ getTrendIcon(statTrends.revenue.direction) }}</mat-icon>
             {{ statTrends.revenue.text }}
@@ -251,7 +257,7 @@
       <mat-card class="chart-card side-chart">
         <mat-card-header>
           <mat-card-title>
-             <mat-icon>bar_chart</mat-icon> Revenue
+            <mat-icon>bar_chart</mat-icon> Revenue
           </mat-card-title>
         </mat-card-header>
         <mat-card-content>
@@ -309,32 +315,33 @@
           <mat-card-title>Recent Activity</mat-card-title>
         </mat-card-header>
         <mat-card-content>
-           <mat-list>
-              <mat-list-item *ngFor="let enrollment of dashboardStats.recentEnrollments">
-                 <mat-icon matListItemIcon>person_outline</mat-icon>
-                 <div matListItemTitle class="list-title">{{ enrollment.studentName }}</div>
-                 <div matListItemLine class="list-subtitle">Enrolled in {{ enrollment.courseName }}</div>
-                 <div matListItemMeta class="list-meta">{{ formatDate(enrollment.enrollmentDate) }}</div>
-              </mat-list-item>
-           </mat-list>
+          <mat-list>
+            <mat-list-item *ngFor="let enrollment of dashboardStats.recentEnrollments">
+              <mat-icon matListItemIcon>person_outline</mat-icon>
+              <div matListItemTitle class="list-title">{{ enrollment.studentName }}</div>
+              <div matListItemLine class="list-subtitle">Enrolled in {{ enrollment.courseName }}</div>
+              <div matListItemMeta class="list-meta">{{ formatDate(enrollment.enrollmentDate) }}</div>
+            </mat-list-item>
+          </mat-list>
         </mat-card-content>
       </mat-card>
-      
-       <!-- Popular Courses List (Text) -->
+
+      <!-- Popular Courses List (Text) -->
       <mat-card class="list-card">
         <mat-card-header>
           <mat-card-title>Course Rankings</mat-card-title>
         </mat-card-header>
         <mat-card-content>
           <div class="ranking-list">
-             <div *ngFor="let course of dashboardStats.popularCourses; let i = index" class="ranking-item">
-               <div class="ranking-badge">{{ i + 1 }}</div>
-               <div class="ranking-info">
-                 <div class="ranking-title">{{ course.title }}</div>
-                 <mat-progress-bar mode="determinate" [value]="getPopularityPercentage(course.enrollmentCount)"></mat-progress-bar>
-               </div>
-               <div class="ranking-count">{{ course.enrollmentCount }}</div>
-             </div>
+            <div *ngFor="let course of dashboardStats.popularCourses; let i = index" class="ranking-item">
+              <div class="ranking-badge">{{ i + 1 }}</div>
+              <div class="ranking-info">
+                <div class="ranking-title">{{ course.title }}</div>
+                <mat-progress-bar mode="determinate"
+                  [value]="getPopularityPercentage(course.enrollmentCount)"></mat-progress-bar>
+              </div>
+              <div class="ranking-count">{{ course.enrollmentCount }}</div>
+            </div>
           </div>
         </mat-card-content>
       </mat-card>

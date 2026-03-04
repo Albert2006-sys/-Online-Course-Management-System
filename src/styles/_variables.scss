@@ -1,9 +1,59 @@
-// Color Variables
-$primary-color: #3f51b5;
-$accent-color: #ff4081;
-$warn-color: #f44336;
-$success-color: #4caf50;
-$info-color: #2196f3;
+// ============================================================
+// Dark Glassmorphism Design System — Variables
+// ============================================================
+
+// Brand Gradient
+$grad-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+$grad-accent:  linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+$grad-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+$grad-warn:    linear-gradient(135deg, #f7971e 0%, #ffd200 100%);
+
+// Background Palette
+$bg-deep:      #0a0e1a;
+$bg-surface:   #111827;
+$bg-card:      rgba(255, 255, 255, 0.05);
+$bg-card-hover:rgba(255, 255, 255, 0.09);
+$bg-input:     rgba(255, 255, 255, 0.07);
+$bg-overlay:   rgba(10, 14, 26, 0.7);
+
+// Text
+$text-primary:    #f0f4ff;
+$text-secondary:  #94a3b8;
+$text-muted:      #4b5563;
+
+// Accent Colors
+$color-purple:  #667eea;
+$color-violet:  #764ba2;
+$color-pink:    #f5576c;
+$color-cyan:    #00f2fe;
+$color-blue:    #4facfe;
+$color-green:   #43e97b;
+$color-amber:   #ffd200;
+$color-red:     #ff4d6d;
+
+// Glass Effect
+$glass-bg:      rgba(255, 255, 255, 0.06);
+$glass-border:  rgba(255, 255, 255, 0.12);
+$glass-blur:    blur(20px);
+$glass-shadow:  0 8px 32px rgba(0, 0, 0, 0.4);
+
+// Borders
+$border-subtle: 1px solid rgba(255, 255, 255, 0.08);
+$border-glow:   1px solid rgba(102, 126, 234, 0.4);
+
+// Shadows
+$shadow-sm:     0 2px 8px rgba(0, 0, 0, 0.3);
+$shadow-md:     0 4px 24px rgba(0, 0, 0, 0.4);
+$shadow-lg:     0 8px 48px rgba(0, 0, 0, 0.5);
+$shadow-glow:   0 0 30px rgba(102, 126, 234, 0.25);
+$shadow-glow-pink: 0 0 30px rgba(245, 87, 108, 0.25);
+
+// Radius
+$radius-sm:  6px;
+$radius-md:  12px;
+$radius-lg:  18px;
+$radius-xl:  24px;
+$radius-pill:999px;
 
 // Spacing
 $spacing-xs: 4px;
@@ -11,14 +61,17 @@ $spacing-sm: 8px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
 $spacing-xl: 32px;
+$spacing-2xl:48px;
 
 // Breakpoints
-$breakpoint-xs: 576px;
 $breakpoint-sm: 768px;
 $breakpoint-md: 992px;
 $breakpoint-lg: 1200px;
-$breakpoint-xl: 1400px;
+
+// Typography
+$font-body: 'Inter', 'Segoe UI', sans-serif;
+$font-mono: 'JetBrains Mono', monospace;
 
 // Card
-$card-padding: 16px;
-$card-border-radius: 4px;
+$card-padding: $spacing-lg;
+$card-border-radius: $radius-lg;

@@ -1,32 +1,96 @@
 @import './variables';
 
-// Responsive Breakpoint Mixin
-@mixin responsive($breakpoint) {
-  @if $breakpoint == xs {
-    @media (max-width: $breakpoint-xs) { @content; }
-  }
-  @else if $breakpoint == sm {
-    @media (max-width: $breakpoint-sm) { @content; }
-  }
-  @else if $breakpoint == md {
-    @media (max-width: $breakpoint-md) { @content; }
-  }
-  @else if $breakpoint == lg {
-    @media (max-width: $breakpoint-lg) { @content; }
-  }
-  @else if $breakpoint == xl {
-    @media (max-width: $breakpoint-xl) { @content; }
+// ---- Glass Card ----
+@mixin glass-card {
+  background: $glass-bg;
+  backdrop-filter: $glass-blur;
+  -webkit-backdrop-filter: $glass-blur;
+  border: $glass-border 1px solid;
+  box-shadow: $glass-shadow;
+  border-radius: $radius-lg;
+}
+
+// ---- Hover Lift + Glow ----
+@mixin hover-lift($glow-color: $color-purple) {
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba($glow-color, 0.25),
+      0 0 0 1px rgba($glow-color, 0.2);
   }
 }
 
-// Flex Center Mixin
+// ---- Gradient Text ----
+@mixin gradient-text($gradient: $grad-primary) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// ---- Glow Button ----
+@mixin glow-button($color: $color-purple) {
+  background: linear-gradient(135deg, lighten($color, 5%) 0%, darken($color, 5%) 100%);
+  box-shadow: 0 4px 20px rgba($color, 0.4);
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  transition: all 0.2s ease;
+
+  &:hover:not([disabled]) {
+    box-shadow: 0 6px 28px rgba($color, 0.55);
+    transform: translateY(-2px);
+  }
+}
+
+// ---- Responsive ----
+@mixin responsive($bp) {
+  @if $bp ==sm {
+    @media (max-width: $breakpoint-sm) {
+      @content;
+    }
+  }
+
+  @else if $bp ==md {
+    @media (max-width: $breakpoint-md) {
+      @content;
+    }
+  }
+
+  @else if $bp ==lg {
+    @media (max-width: $breakpoint-lg) {
+      @content;
+    }
+  }
+}
+
+// ---- Card Shadow ----
+@mixin card-shadow {
+  box-shadow: $shadow-md;
+}
+
+// ---- Flex Center ----
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-// Card Shadow Mixin
-@mixin card-shadow {
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+// ---- Top Accent Bar ----
+@mixin top-accent($gradient: $grad-primary) {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: $gradient;
+    border-radius: $radius-lg $radius-lg 0 0;
+  }
 }
