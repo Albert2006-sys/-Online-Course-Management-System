@@ -10,11 +10,7 @@
         <mat-icon>edit</mat-icon>
         Edit Course
       </button>
-      <button 
-        mat-raised-button 
-        [color]="course.isActive ? 'warn' : 'accent'"
-        (click)="toggleStatus()"
-      >
+      <button mat-raised-button [color]="course.isActive ? 'warn' : 'accent'" (click)="toggleStatus()">
         <mat-icon>{{ course.isActive ? 'block' : 'check_circle' }}</mat-icon>
         {{ course.isActive ? 'Deactivate' : 'Activate' }}
       </button>
@@ -73,7 +69,7 @@
           <mat-icon>attach_money</mat-icon>
           <div>
             <span class="label">Price</span>
-            <span class="value price">${{ course.price.toFixed(2) }}</span>
+            <span class="value price">{{ course.price | currency:'USD':'symbol':'1.2-2' }}</span>
           </div>
         </div>
 
@@ -202,7 +198,7 @@
           <mat-icon matListItemIcon>person</mat-icon>
           <div matListItemTitle>Student ID: {{ enrollment.studentId }}</div>
           <div matListItemLine>
-            Enrolled: {{ enrollment.enrollmentDate | date: 'short' }} | 
+            Enrolled: {{ enrollment.enrollmentDate | date: 'short' }} |
             Progress: {{ enrollment.progress }}%
           </div>
           <mat-chip matListItemMeta [class]="getStatusColor(enrollment.status)">

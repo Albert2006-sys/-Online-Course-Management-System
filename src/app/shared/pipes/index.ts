@@ -5,3 +5,4 @@ export * from './time-ago.pipe';
 export * from './safe-html.pipe';
 export * from './filter.pipe';
 export * from './order-by.pipe';
+export * from './course-filter.pipe';

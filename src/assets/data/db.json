@@ -325,6 +325,33 @@
         "Build interactive web applications"
       ],
       "maxStudents": 3500
+    },
+    {
+      "title": "Intro to Java",
+      "description": "basic concepts in java\n",
+      "category": "Mobile Development",
+      "level": "Beginner",
+      "duration": 20,
+      "price": 100,
+      "instructor": "BalGopal",
+      "thumbnail": "",
+      "isActive": true,
+      "maxStudents": 20,
+      "tags": [
+        "java",
+        "development"
+      ],
+      "prerequisites": [
+        "no prerequisites"
+      ],
+      "learningOutcomes": [
+        "basics of jsava"
+      ],
+      "createdAt": "2026-03-05T04:40:57.972Z",
+      "updatedAt": "2026-03-05T04:40:57.973Z",
+      "enrollmentCount": 0,
+      "popularity": 0,
+      "id": 11
     }
   ],
   "students": [
@@ -629,6 +656,29 @@
       ],
       "totalCoursesCompleted": 1,
       "averageGrade": 95
+    },
+    {
+      "id": 1772686237221,
+      "name": "Albert John",
+      "email": "albertjohn1639@gmail.com",
+      "phone": "1545154515151",
+      "dateOfBirth": "2026-03-02",
+      "address": {
+        "street": "Anithottathil (H) ,Pallimoola",
+        "city": "Thrissur",
+        "state": "Kerala",
+        "zipCode": "65432",
+        "country": "India"
+      },
+      "educationLevel": "Associate Degree",
+      "status": "Suspended",
+      "profileImage": "https://www.freepik.com/free-photo/landscape-morning-fog-mountains-with-hot-air-balloons-sunrise_13180513.htm#fromView=keyword&page=1&position=0&uuid=38acd70e-ec38-4193-92f5-8e9edceb2319&query=Landscape",
+      "interests": [],
+      "enrolledCourses": [],
+      "totalCoursesCompleted": 0,
+      "createdAt": "2026-03-05T04:50:37.221Z",
+      "updatedAt": "2026-03-05T04:51:20.270Z",
+      "averageGrade": 0
     }
   ],
   "enrollments": [

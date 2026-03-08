@@ -10,6 +10,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatListModule } from '@angular/material/list';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { CurrencyPipe } from '@angular/common';
 
 import { CourseService } from '../../services/course.service';
 import { EnrollmentService } from '../../../enrollments/services/enrollment.service';
@@ -34,7 +35,8 @@ import { Enrollment } from '@shared/models/enrollment.model';
     MatProgressSpinnerModule,
     MatTabsModule,
     MatListModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    CurrencyPipe
   ],
   templateUrl: './course-detail.component.html',
   styleUrls: ['./course-detail.component.scss']
@@ -61,7 +63,7 @@ export class CourseDetailComponent implements OnInit {
     private courseService: CourseService,
     private enrollmentService: EnrollmentService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {

@@ -17,6 +17,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { HighlightDirective } from '@shared/directives/highlight.directive';
+import { CourseFilterPipe } from '@shared/pipes/course-filter.pipe';
 
 import { CourseService } from '../../services/course.service';
 import { Course, CourseCategory, CourseLevel } from '@shared/models/course.model';
@@ -47,7 +48,8 @@ import { CourseDeleteDialogComponent } from '../course-delete-dialog/course-dele
     MatProgressSpinnerModule,
     MatDialogModule,
     MatSnackBarModule,
-    HighlightDirective
+    HighlightDirective,
+    CourseFilterPipe
   ],
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.scss']
@@ -91,7 +93,7 @@ export class CourseListComponent implements OnInit {
     private courseService: CourseService,
     private dialog: MatDialog,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadCourses();
@@ -108,10 +110,10 @@ export class CourseListComponent implements OnInit {
         this.dataSource = new MatTableDataSource(courses);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        
+
         // Custom filter predicate
         this.dataSource.filterPredicate = this.createFilter();
-        
+
         this.isLoading = false;
       },
       error: (error) => {
@@ -139,7 +141,7 @@ export class CourseListComponent implements OnInit {
       level: this.selectedLevel,
       status: this.selectedStatus
     });
-    
+
     this.dataSource.filter = filterValue;
 
     if (this.dataSource.paginator) {
@@ -164,24 +166,24 @@ export class CourseListComponent implements OnInit {
   private createFilter(): (data: Course, filter: string) => boolean {
     return (data: Course, filter: string): boolean => {
       const searchTerms = JSON.parse(filter);
-      
+
       // Search term filter
-      const searchMatch = !searchTerms.search || 
+      const searchMatch = !searchTerms.search ||
         data.title.toLowerCase().includes(searchTerms.search) ||
         data.description.toLowerCase().includes(searchTerms.search) ||
         data.instructor.toLowerCase().includes(searchTerms.search) ||
         data.category.toLowerCase().includes(searchTerms.search);
 
       // Category filter
-      const categoryMatch = !searchTerms.category || 
+      const categoryMatch = !searchTerms.category ||
         data.category === searchTerms.category;
 
       // Level filter
-      const levelMatch = !searchTerms.level || 
+      const levelMatch = !searchTerms.level ||
         data.level === searchTerms.level;
 
       // Status filter
-      const statusMatch = !searchTerms.status || 
+      const statusMatch = !searchTerms.status ||
         data.isActive.toString() === searchTerms.status;
 
       return searchMatch && categoryMatch && levelMatch && statusMatch;
