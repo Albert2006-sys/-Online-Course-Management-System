@@ -64,6 +64,7 @@ export class StudentListComponent implements OnInit {
   dataSource!: MatTableDataSource<Student>;
   students: Student[] = [];
   isLoading = true;
+  imageErrors = new Set<number | string>();
 
   // Filter properties
   searchTerm = '';
@@ -78,7 +79,7 @@ export class StudentListComponent implements OnInit {
   constructor(
     private studentService: StudentService,
     private snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadStudents();
@@ -95,10 +96,10 @@ export class StudentListComponent implements OnInit {
         this.dataSource = new MatTableDataSource(students);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
-        
+
         // Custom filter predicate
         this.dataSource.filterPredicate = this.createFilter();
-        
+
         this.isLoading = false;
       },
       error: (error) => {
@@ -124,7 +125,7 @@ export class StudentListComponent implements OnInit {
       search: this.searchTerm.toLowerCase(),
       status: this.selectedStatus
     });
-    
+
     this.dataSource.filter = filterValue;
 
     if (this.dataSource.paginator) {
@@ -147,15 +148,15 @@ export class StudentListComponent implements OnInit {
   private createFilter(): (data: Student, filter: string) => boolean {
     return (data: Student, filter: string): boolean => {
       const searchTerms = JSON.parse(filter);
-      
+
       // Search term filter
-      const searchMatch = !searchTerms.search || 
+      const searchMatch = !searchTerms.search ||
         data.name.toLowerCase().includes(searchTerms.search) ||
         data.email.toLowerCase().includes(searchTerms.search) ||
         (data.phone && data.phone.toLowerCase().includes(searchTerms.search));
 
       // Status filter
-      const statusMatch = !searchTerms.status || 
+      const statusMatch = !searchTerms.status ||
         data.status === searchTerms.status;
 
       return !!(searchMatch && statusMatch);
@@ -222,6 +223,13 @@ export class StudentListComponent implements OnInit {
     if (grade >= 80) return 'grade-good';
     if (grade >= 70) return 'grade-fair';
     return 'grade-poor';
+  }
+
+  /**
+   * Handle broken profile image - fall back to initials
+   */
+  onImageError(studentId: number | string): void {
+    this.imageErrors.add(studentId);
   }
 
   /**
