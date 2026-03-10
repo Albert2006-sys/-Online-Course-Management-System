@@ -121,11 +121,20 @@
         border: 2px solid rgba(79, 172, 254, 0.3);
       }
 
-      .avatar-icon {
+      .avatar-initials {
         width: 36px;
         height: 36px;
-        font-size: 36px;
-        color: $text-muted;
+        border-radius: 50%;
+        background: linear-gradient(135deg, $color-purple 0%, $color-violet 100%);
+        color: #fff;
+        font-size: 15px;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        letter-spacing: 0;
+        border: 2px solid rgba(102, 126, 234, 0.35);
       }
 
       span {

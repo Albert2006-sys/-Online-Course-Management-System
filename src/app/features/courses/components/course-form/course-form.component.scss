@@ -1,7 +1,23 @@
+@import '../../../../../styles/variables';
+@import '../../../../../styles/mixins';
+
 .course-form-container {
-  padding: 24px;
-  background-color: #f5f5f5;
+  padding: 28px;
+  background: transparent;
   min-height: 100vh;
+  animation: fadeSlideUp 0.4s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .header {
@@ -11,13 +27,15 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    color: #3f51b5;
-    font-size: 28px;
+    font-size: 26px;
+    font-weight: 800;
+    @include gradient-text($grad-primary);
 
     mat-icon {
-      font-size: 32px;
-      width: 32px;
-      height: 32px;
+      font-size: 30px;
+      width: 30px;
+      height: 30px;
+      -webkit-text-fill-color: $color-purple;
     }
   }
 }
@@ -31,14 +49,16 @@
   gap: 16px;
 
   p {
-    color: #666;
+    color: $text-secondary;
     font-size: 16px;
   }
 }
 
 mat-card {
+  @include glass-card;
   max-width: 1000px;
   margin: 0 auto;
+  color: $text-primary;
 }
 
 form {
@@ -49,22 +69,23 @@ form {
 
 .form-section {
   padding: 24px;
-  background-color: #f8f9fa;
-  border-radius: 8px;
-  border-left: 4px solid #3f51b5;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: $radius-md;
+  border-left: 4px solid $color-purple;
 
   h3 {
     display: flex;
     align-items: center;
     gap: 8px;
-    color: #3f51b5;
-    font-size: 18px;
-    margin: 0 0 24px 0;
+    color: $color-purple;
+    font-size: 17px;
+    font-weight: 700;
+    margin: 0 0 20px 0;
 
     mat-icon {
-      font-size: 24px;
-      width: 24px;
-      height: 24px;
+      font-size: 22px;
+      width: 22px;
+      height: 22px;
     }
   }
 }
@@ -90,6 +111,7 @@ mat-form-field {
 
 mat-checkbox {
   margin-top: 16px;
+  color: $text-secondary;
 }
 
 /* Chip Styles */
@@ -98,12 +120,13 @@ mat-chip-grid {
 }
 
 mat-chip-row {
-  background-color: #e3f2fd !important;
-  color: #1976d2 !important;
-  font-weight: 500;
+  background: rgba(102, 126, 234, 0.15) !important;
+  color: $color-purple !important;
+  border: 1px solid rgba(102, 126, 234, 0.3) !important;
+  font-weight: 600;
 
   button[matChipRemove] {
-    color: #1976d2;
+    color: $color-purple;
     opacity: 0.7;
     transition: opacity 0.2s;
 
@@ -119,7 +142,7 @@ mat-chip-row {
   justify-content: flex-end;
   gap: 16px;
   padding-top: 24px;
-  border-top: 2px solid #e0e0e0;
+  border-top: 1px solid $glass-border;
 
   button {
     min-width: 150px;
